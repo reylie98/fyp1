@@ -261,5 +261,13 @@ $(document).ready(function(){
 			$(this).parent('div').remove(); //Remove field html
 			x--; //Decrement field counter
 	});
+
+	$("#deleteatt").click(function(){
+		if(confirm('Are you sure you want to delete this Attribute?')){
+			return true;
+		}
+		return false;
+	});
+
 });
 });
