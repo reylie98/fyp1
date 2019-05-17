@@ -150,4 +150,10 @@ class ProductsController extends Controller
         ProductsAttribute::where(['id'=>$id])->delete();
         return redirect()->back()->with('flash_message_success','Attribute has been deleted!');
     }
+    public function product($url=null){
+        $categoryUrl = Category::where (['url'=>$url])->first();
+        $productUrl = Product::where (['category_id'=>$categoryUrl->id])->get();
+        return view('product.list')->with()->compact('categoryUrl','productUrl');
+
+    }
 }
