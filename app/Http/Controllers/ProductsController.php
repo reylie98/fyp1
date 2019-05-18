@@ -153,7 +153,20 @@ class ProductsController extends Controller
     public function product($url=null){
         $categories = Category::with('categories')->where(['parent_id'=>0])->get();
         $categoryUrl = Category::where (['url'=> $url])->first();
-        $allProducts = Product::where (['category_id'=> $categoryUrl->id])->get();
+
+        if ($categoryUrl->parent_id==0){
+            $subCategories = Category::where(['parent_id'=>$categoryUrl->id])->get();
+            foreach($subCategories as $subcat){
+                $cat_ids[] = $subcat->id;
+            }
+            //echo $cat_ids; 
+            $allProducts = Product::whereIn ('category_id',$cat_ids)->get();
+            $allProducts = json_decode(json_encode($allProducts));
+           //dd($allProducts);
+        }else{
+            $allProducts = Product::where (['category_id'=> $categoryUrl->id])->get();
+        }
+
         return view('product.list')->with(compact('categories','categoryUrl','allProducts'));
 
     }
