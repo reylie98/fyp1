@@ -151,6 +151,11 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success','Attribute has been deleted!');
     }
     public function product($url=null){
+
+        $countCategory = Category::where(['url'=>$url,'status'=>1])->count();
+        if($countCategory==0){
+            abort(404);
+        }
         $categories = Category::with('categories')->where(['parent_id'=>0])->get();
         $categoryUrl = Category::where (['url'=> $url])->first();
 
