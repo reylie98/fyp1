@@ -90,16 +90,16 @@
 								<h2>{{$productDetails -> product_name}}</h2>
 								<p>Code: {{$productDetails -> product_code}}</p>
 								<p>
-									<select name="size" style="width:150px;">
+									<select id = "sellsize" name="size" style="width:150px;">
 											<option value="">Select Size </option>
 											@foreach($productDetails->attributes as $sizes)
-											<option value="{{$sizes->size}}">{{$sizes->size}}</option>
+											<option value="{{$productDetails->id}}-{{$sizes->size}}">{{$sizes->size}}</option>
 											@endforeach
 									</select>
 								</p>
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
-									<span>RM {{$productDetails -> price}}</span>
+									<span id="getPrice">RM {{$productDetails -> price}}</span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
 									<button type="button" class="btn btn-fefault cart">

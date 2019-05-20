@@ -28,3 +28,22 @@ $(document).ready(function(){
 		});
 	});
 });
+
+$(document).ready(function(){
+		$("#sellsize").change(function(){
+				var idSize = $(this).val();
+				if(idSize == ""){
+					return false;
+				}
+				$.ajax({
+						type:'get',
+						url:'/getproductprice',
+						data:{idSize:idSize},
+						success:function(resp){
+								$("#getPrice").html("RM "+resp);
+						},error:function(){
+								alert("Error");
+						}
+				});
+		});
+});

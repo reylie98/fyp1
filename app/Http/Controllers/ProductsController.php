@@ -182,4 +182,11 @@ class ProductsController extends Controller
         $categories = Category::with('categories')->where(['parent_id'=>0])->get();
         return view('product.detail')->with(compact('productDetails','categories'));
     }
+    public function productprice(Request $request){
+        $data = $request->all();
+        $proArr = explode("-",$data['idSize']);
+        $proAttr = ProductsAttribute::where(['product_id'=> $proArr[0], 'size'=>$proArr [1]])->first();
+        echo $proAttr->price;
+
+    }
 }
