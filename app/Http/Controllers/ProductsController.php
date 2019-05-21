@@ -133,6 +133,16 @@ class ProductsController extends Controller
             $data=$request->all();
             foreach($data['sku']as $key => $val){
                 if(!empty($val)){
+                    $skucount = ProductsAttribute::where('sku',$val)->count();
+                    if ($skucount>0){
+                        return redirect('admin/addatributes/'.$id)->with('flash_message_error','SKU already exist!');
+                    }
+
+                    $sizecount = ProductsAttribute::where(['product_id'=>$id,'size'=>$data['size'][$key]])->count();
+                    if($sizecount>0){
+                        return redirect('admin/addatributes/'.$id)->with('flash_message_error','"'.$data['size'][$key].'" Size already exist!');
+                    }
+
                     $attribute = new ProductsAttribute;
                     $attribute->product_id = $id;
                     $attribute->sku = $val;
