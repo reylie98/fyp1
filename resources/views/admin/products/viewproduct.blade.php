@@ -56,7 +56,7 @@
                         <img src="{{asset('/images/Backendimages/products/small/'.$product->image)}}" style="width:50px;"> </td>
                     @endif
                       <td class="centre"><a href="{{url('/admin/editproduct/'.$product->id) }}" class="btn btn-primary btn-mini">Edit</a> <a href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a> <a id="deleteProduct" href="{{url('/admin/deleteproduct/'.$product->id)}}" class="btn btn-danger btn-mini">Delete</a>
-                      <a href="{{url('/admin/addatributes/'.$product->id) }}" class="btn btn-success btn-mini">Add</a>
+                      <a href="{{url('/admin/addatributes/'.$product->id) }}" class="btn btn-success btn-mini">Add</a> <a href="{{url('/admin/addimages/'.$product->id) }}" class="btn btn-info btn-mini">images</a>
                     </td>
                 </tr>   
                             <div id="myModal{{ $product->id }}" class="modal hide">
