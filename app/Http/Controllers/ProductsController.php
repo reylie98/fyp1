@@ -222,9 +222,12 @@ class ProductsController extends Controller
                     $image->product_id = $data['product_id'];
                     $image->save();
                 }
+
                 return redirect('admin/addimages/'.$id)->with('flash_message_success','Product Images has been added successfully');
             }         
         }
-        return view('admin.products.addimages')->with(compact('productDetails'));
+        $productsimages= ProductsImage::where(['product_id'=>$id])->get();
+        $productsimages= json_decode(json_encode($productsimages));
+        return view('admin.products.addimages')->with(compact('productDetails', 'productsimages'));
     }
 }

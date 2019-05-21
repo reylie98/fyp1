@@ -3,7 +3,7 @@
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Products Attribute</a> <a href="#" class="current">Validation</a> </div>
-    <h1>Add Products Images</h1>
+    <h1>Add Products Alternate Images</h1>
     @if(Session::has('flash_message_error')) 
        <div class="alert alert-error alert-block">
 	        <button type="button" class="close" data-dismiss="alert">×</button>	
@@ -64,6 +64,14 @@
                   <th>Image</th>
                   <th>Actions</th>
                 </tr>
+                @foreach($productsimages as $image)
+                    <tr>
+                        <td>{{$image->id}}</td>
+                        <td>{{$image->product_id}}</td>
+                        <td><img src="{{asset('images/Backendimages/products/small/'.$image->image)}}" style="width:50px;"></td>
+                        <td>Delete</td>
+                    </tr>
+                @endforeach
               </thead>
               <tbody>
               </tbody>
