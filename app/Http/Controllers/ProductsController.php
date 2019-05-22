@@ -230,4 +230,24 @@ class ProductsController extends Controller
         $productsimages= json_decode(json_encode($productsimages));
         return view('admin.products.addimages')->with(compact('productDetails', 'productsimages'));
     }
+    public function deletealtimage($id=null){
+        $productsImage= ProductsImage::where(['id'=>$id])->first();
+        $largeimagepath='images/Backendimages/products/large/';
+        $mediumimagepath='images/Backendimages/products/medium/';
+        $smallimagepath='images/Backendimages/products/small/';
+
+        if(file_exists($largeimagepath.$productsImage->image)){
+            unlink($largeimagepath.$productsImage->image);
+        }
+        
+        if(file_exists($mediumimagepath.$productsImage->image)){
+            unlink($mediumimagepath.$productsImage->image);
+        }
+        
+        if(file_exists($smallimagepath.$productsImage->image)){
+            unlink($smallimagepath.$productsImage->image);
+        }
+        ProductsImage::where(['id'=>$id])->delete();
+        return redirect()->back()->with('flash_message_success', ' Product image has been deleted');
+    }
 }
