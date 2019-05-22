@@ -68,7 +68,7 @@
                     <tr>
                         <td>{{$image->id}}</td>
                         <td>{{$image->product_id}}</td>
-                        <td><img src="{{asset('images/Backendimages/products/small/'.$image->image)}}" style="width:50px;"></td>
+                        <td><img src="{{asset('images/Backendimages/products/small/'.$image->image)}}" style="width:150px;"></td>
                         <td class="center"><a id="deleteimage" href="{{url('/admin/deletealtimage/'.$image->id)}}" class="btn btn-danger btn-mini">Delete</a></td>
                     </tr>
                 @endforeach
