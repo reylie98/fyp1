@@ -254,4 +254,15 @@ class ProductsController extends Controller
         ProductsImage::where(['id'=>$id])->delete();
         return redirect()->back()->with('flash_message_success', ' Product image has been deleted');
     }
+    public function editAttributes(Request $request, $id=null){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            Foreach($data['AttrId'] as $key=> $attr){
+                ProductsAttribute::where(['id'=>$data['AttrId'][$key]])->update(['price'=>$data['AttrPrice'][$key],'stock'=>$data['AttrStock'][$key]]);
+            }
+        return redirect()->back()->with('flash_message_success','Products Attributes has been updated');
+        }
+   
+
+    }
 }

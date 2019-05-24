@@ -40,6 +40,8 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/deleteproduct/{id}','ProductsController@deleteProduct');
 
     Route::match(['get','post'],'/admin/addatributes/{id}','ProductsController@addAttributes');
+    Route::match(['get','post'],'/admin/addatributes/{id}','ProductsController@addAttributes');
+    Route::match(['get','post'],'/admin/editatributes/{id}','ProductsController@editAttributes');
     Route::match(['get','post'],'/admin/addimages/{id}','ProductsController@addImages');
     Route::get('/admin/deleteatribute/{id}','ProductsController@deleteAttribute');
     Route::get('/admin/deletealtimage/{id}','ProductsController@deletealtimage');
