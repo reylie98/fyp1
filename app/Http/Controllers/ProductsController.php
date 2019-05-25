@@ -195,13 +195,18 @@ class ProductsController extends Controller
         $productImages = ProductsImage::where('product_id',$id)->get();
         $productImages = json_decode(json_encode($productImages));
         //dd($productImages);
-        return view('product.detail')->with(compact('productDetails','categories','productImages'));
+
+        $totalstock = ProductsAttribute::where('product_id',$id)->sum('stock');
+        // dd($totalstock);
+        return view('product.detail')->with(compact('productDetails','categories','productImages','totalstock'));
     }
     public function productprice(Request $request){
         $data = $request->all();
         $proArr = explode("-",$data['idSize']);
         $proAttr = ProductsAttribute::where(['product_id'=> $proArr[0], 'size'=>$proArr [1]])->first();
         echo $proAttr->price;
+        echo "#";
+        echo $proAttr->stock;
 
     }
     public function addImages(Request $request,$id=null){

@@ -40,7 +40,15 @@ $(document).ready(function(){
 						url:'/getproductprice',
 						data:{idSize:idSize},
 						success:function(resp){
-								$("#getPrice").html("RM "+resp);
+								var arr = resp.split('#');
+								$("#getPrice").html("RM "+arr[0]);
+								if(arr[1]==0){
+									$("#cartButton").hide();
+									$("#Ava").text("Out of Stock");
+								}else{
+									$("#cartButton").show();
+									$("#Ava").text("In Stock");
+								}
 						},error:function(){
 								alert("Error");
 						}

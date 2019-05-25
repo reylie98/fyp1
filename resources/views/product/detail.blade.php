@@ -44,13 +44,15 @@
 									<span id="getPrice">RM {{$productDetails -> price}}</span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
+									@if($totalstock>0)
+										<button type="button" class="btn btn-fefault cart" id="cartButton">
+											<i class="fa fa-shopping-cart"></i>
+											Add to cart
+										</button>
+									@endif
 								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
+								<p><b>Availability:</b><span id="Ava">@if($totalstock>0) In Stock @else Out of stock @endif</p>
+								<p><b>Condition:</b> New</p></span>
 								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
