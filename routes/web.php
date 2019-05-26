@@ -26,6 +26,7 @@ Route::get('/product/{id}','ProductsController@products');
 Route::get('/getproductprice','ProductsController@productprice');
 //add to cart
 Route::match(['get','post'],'/addcart','ProductsController@addtocart');
+Route::match(['get','post'],'/cart','ProductsController@cart');
 
 Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/dashboard','AdminController@dashboard');
