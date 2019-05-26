@@ -301,4 +301,9 @@ class ProductsController extends Controller
    
 
     }
+    public function addtocart(Request $request){
+        $data = $request->all();
+        dd($data);
+
+    }
 }

@@ -42,6 +42,7 @@ $(document).ready(function(){
 						success:function(resp){
 								var arr = resp.split('#');
 								$("#getPrice").html("RM "+arr[0]);
+								$("#price").val(arr[0]);
 								if(arr[1]==0){
 									$("#cartButton").hide();
 									$("#Ava").text("Out of Stock");

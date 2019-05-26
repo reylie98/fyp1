@@ -18,10 +18,14 @@ Route::match(['get','post'],'/admin','AdminController@login');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+//category listing
 Route::get('/products/{url}','ProductsController@product');
+// product detail page
 Route::get('/product/{id}','ProductsController@products');
+//get product attribute price
 Route::get('/getproductprice','ProductsController@productprice');
+//add to cart
+Route::match(['get','post'],'/addcart','ProductsController@addtocart');
 
 Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/dashboard','AdminController@dashboard');
