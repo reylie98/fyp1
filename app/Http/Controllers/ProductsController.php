@@ -43,6 +43,12 @@ class ProductsController extends Controller
                     $product->image =$filename;
                 }
             }
+            if(empty($data['status'])){
+                $status= 0 ;
+            }else{
+                $status= 1;
+            }
+            $product->status = $status;
             $product->save();
             // return redirect()->back()->with('flash_message_success','Product has been added successfully!');
             return redirect('/admin/viewproduct')->with('flash_message_success','Product has been added successfully!');
@@ -92,9 +98,17 @@ class ProductsController extends Controller
             }else{
                 $filename = $data['current_image'];
             }
+
+            if(empty($data['status'])){
+                $status= 0 ;
+            }else{
+                $status= 1;
+            }
+
+   
             Product::where(['id'=>$id])->update(['product_name'=>$data['productname'],'product_code'=>$data['productcode'],
             'product_color'=>$data['productcolor'],'category_id'=>$data['category_id'],'price'=>$data['productprice'],
-            'description'=>$data['description'],'image'=>$filename]);
+            'description'=>$data['description'],'image'=>$filename,'status'=>$status]);
             return redirect()->back()->with('flash_message_success','Product has been updated!');
         }
 
@@ -176,17 +190,22 @@ class ProductsController extends Controller
                 $cat_ids[] = $subcat->id;
             }
             //echo $cat_ids; 
-            $allProducts = Product::whereIn ('category_id',$cat_ids)->get();
+            $allProducts = Product::whereIn ('category_id',$cat_ids)->where('status',1)->get();
             $allProducts = json_decode(json_encode($allProducts));
            //dd($allProducts);
         }else{
-            $allProducts = Product::where (['category_id'=> $categoryUrl->id])->get();
+            $allProducts = Product::where (['category_id'=> $categoryUrl->id])->where('status',1)->get();
         }
 
         return view('product.list')->with(compact('categories','categoryUrl','allProducts'));
 
     }
     public function products($id=null){
+        //PROTECTING ROUTE USING COUNT
+        $productsdisable = Product::where(['id'=>$id, 'status'=>1])->count();
+        if($productsdisable == 0){
+            abort(404);
+        }
         $productDetails = Product::with('attributes')->where('id',$id)->first();
         $productDetails = json_decode(json_encode($productDetails));
         //dd($productDetails);
