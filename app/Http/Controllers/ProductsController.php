@@ -332,4 +332,8 @@ class ProductsController extends Controller
         }
         return view('product.cart')->with(compact('userCart'));
     }
+    public function deletecart($id=null){
+        DB::table('cart')->where('id',$id)->delete();
+        return redirect('cart')->with('flash_message_success', 'Product has been deleted from Cart!');
+    }
 }
