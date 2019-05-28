@@ -36,12 +36,12 @@
 						@foreach($userCart as $cart)
 							<tr>
 								<td class="cart_product">
-									<a href=""><img src="images/cart/one.png" alt=""></a>
+									<img style="width:150px;" src="{{asset('images/Backendimages/products/medium/'.$cart->image)}}" alt=""></a>
 								</td>
 								<td class="cart_description">
 									<h4><a href="">{{$cart->product_name}}</a></h4>
 									<p>Product Code :{{$cart->product_code}} | Size :{{$cart->size}}</p>
-									<p>Product Clor :{{$cart->product_color}}</p>
+									<p>Product Color :{{$cart->product_color}}</p>
 								</td>
 								<td class="cart_price">
 									<p>MYR {{$cart->price}}</p>
