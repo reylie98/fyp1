@@ -336,4 +336,8 @@ class ProductsController extends Controller
         DB::table('cart')->where('id',$id)->delete();
         return redirect('cart')->with('flash_message_success', 'Product has been deleted from Cart!');
     }
+    public function updatequantity($id=null,$quantity=null){
+        DB::table('cart')->where('id',$id)->increment('quantity',$quantity);
+        return redirect('cart');
+    }
 }

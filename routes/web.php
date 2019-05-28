@@ -27,8 +27,9 @@ Route::get('/getproductprice','ProductsController@productprice');
 //add to cart
 Route::match(['get','post'],'/addcart','ProductsController@addtocart');
 Route::match(['get','post'],'/cart','ProductsController@cart');
-//delete product from cart
 Route::get('/cart/deleteproduct/{id}','ProductsController@deletecart');
+//delete product from cart
+Route::get('/cart/updatequantity/{id}/{quantity}','ProductsController@updatequantity');
 
 Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/dashboard','AdminController@dashboard');
