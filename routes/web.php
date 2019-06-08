@@ -55,6 +55,7 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/deletealtimage/{id}','ProductsController@deletealtimage');
     
     Route::match(['get','post'],'/admin/addcoupon','CouponsController@addCoupon');
+    Route::get('/admin/viewcoupon','CouponsController@viewCoupons');
 });
 
 Route::get('/logout','AdminController@logout');
