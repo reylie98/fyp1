@@ -324,7 +324,9 @@ class ProductsController extends Controller
         if($duplicateproduct>0){
             return redirect()->back()->with('flash_message_error','Product already exist in Cart!');
         }else{
-        DB::table('cart')->insert(['product_id'=>$data['product_id'],'product_name'=>$data['product_name'],'product_code'=>$data['product_code'],
+        $getSKU = ProductsAttribute::select('sku')->where(['product_id'=>$data['product_id'],'size'=>$sizeArr[1]])->first();
+
+        DB::table('cart')->insert(['product_id'=>$data['product_id'],'product_name'=>$data['product_name'],'product_code'=>$getSKU->sku,
         'product_color'=>$data['product_color'],'price'=>$data['product_price'], 'size'=>$sizeArr[1], 'quantity'=>$data['quantity'] , 
         'user_email'=>$data['user_email'], 'session_id'=>$session_id]);
         }
@@ -345,7 +347,16 @@ class ProductsController extends Controller
         return redirect('cart')->with('flash_message_success', 'Product has been deleted from Cart!');
     }
     public function updatequantity($id=null,$quantity=null){
-        DB::table('cart')->where('id',$id)->increment('quantity',$quantity);
-        return redirect('cart');
+        $getdetails = DB::table('cart')->where('id',$id)->first();
+        $getstock = ProductsAttribute::where('sku',$getdetails->product_code)->first();
+        echo $getstock->stock; echo "--";
+        echo $updatequantity = $getdetails->quantity+$quantity;
+        if($getstock->stock >= $updatequantity){
+            DB::table('cart')->where('id',$id)->increment('quantity',$quantity);
+            return redirect('cart');
+        }else{
+            return redirect('cart')->with('flash_message_error', 'Product quantity is not enough !');
+        }
+
     }
 }

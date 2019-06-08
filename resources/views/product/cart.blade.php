@@ -10,11 +10,11 @@
 			</div>
 			<div class="table-responsive cart_info">
 				@if(Session::has('flash_message_error')) 
-					<div class="alert alert-error alert-block">
+					<div class="alert alert-danger alert-block">
 							<button type="button" class="close" data-dismiss="alert">×</button>	
 								<strong>{!! session('flash_message_error') !!}</strong>
-					</div>
-    		@endif   
+						</div>
+   			@endif   
   		  @if(Session::has('flash_message_success')) 
 					<div class="alert alert-success alert-block">
 						<button type="button" class="close" data-dismiss="alert">×</button>	
@@ -33,6 +33,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php $totalamount = 0; ?>
 						@foreach($userCart as $cart)
 							<tr>
 								<td class="cart_product">
@@ -62,6 +63,7 @@
 									<a class="cart_quantity_delete" href="{{url('/cart/deleteproduct/'.$cart->id)}}"><i class="fa fa-times"></i></a>
 								</td>
 							</tr>
+						<?php $totalamount = $totalamount + ($cart->price*$cart->quantity) ; ?>
 						@endforeach
 					</tbody>
 				</table>
