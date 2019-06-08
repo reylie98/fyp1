@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="{{asset('css/backendcss/matrix-media.css')}}" />
 <link href="{{asset('Fonts/Backendfonts/css/font-awesome.css" rel="stylesheet')}}" />
 <link rel="stylesheet" href="{{asset('css/backendcss/jquery.gritter.css')}}" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
@@ -28,7 +29,7 @@
 
 
 <script src="{{ asset('js/BackendJS/jquery.min.js') }}"></script> 
-<script src="{{ asset('js/BackendJS/jquery.ui.custom.js') }}"></script> 
+<!-- <script src="{{ asset('js/BackendJS/jquery.ui.custom.js') }}"></script>  -->
 <script src="{{ asset('js/BackendJS/bootstrap.min.js') }}"></script> 
 <script src="{{ asset('js/BackendJS/jquery.uniform.js') }}"></script> 
 <script src="{{ asset('js/BackendJS/select2.min.js') }}"></script> 
@@ -39,5 +40,11 @@
 <script src="{{ asset('js/BackendJS/matrix.tables.js') }}"></script>
 <script src="{{ asset('js/BackendJS/matrix.popover.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#Expiry" ).datepicker({minDate: 0});
+  } );
+</script>
 </body>
 </html>
