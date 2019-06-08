@@ -25,24 +25,24 @@
             <h5>Add Coupon</h5>
           </div>
           <div class="widget-content nopadding">
-            <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/addcoupon')}}" name="add_coupon" id="add_coupon" novalidate="novalidate">{{ csrf_field() }}
+            <form class="form-horizontal" method="post" action="{{ url('/admin/addcoupon')}}" name="add_coupon" id="add_coupon">{{ csrf_field() }}
             <div class="widget-content nopadding">
               <div class="control-group">
                 <label class="control-label">Coupon Code</label>
                 <div class="controls">
-                  <input type="text" name="couponcode" id="couponcode">
+                  <input type="text" name="couponcode" id="couponcode" minlength="5" maxlength="15" required>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Amount</label>
                 <div class="controls">
-                  <input type="text" name="Amount" id="Amount">
+                  <input type="number" name="Amount" id="Amount" min="0" required>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Expiry Date</label>
                 <div class="controls">
-                  <input type="text" name="Expiry" id="Expiry" autocompete="off">
+                  <input type="text" name="Expiry" id="Expiry" autocompete="off" required>
                 </div>
               </div>
               <div class="control-group">

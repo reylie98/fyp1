@@ -43,7 +43,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
   $( function() {
-    $( "#Expiry" ).datepicker({minDate: 0});
+    $( "#Expiry" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
   } );
 </script>
 </body>
