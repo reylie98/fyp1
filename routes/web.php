@@ -58,6 +58,7 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/viewcoupon','CouponsController@viewCoupons');
     Route::get('/admin/deletecoupon/{id}','CouponsController@deleteCoupon');
     Route::match(['get','post'],'/admin/editcoupon/{id}','CouponsController@editCoupon');
+    Route::post('/cart/applycoupon','ProductsController@applyCoupon');
 });
 
 Route::get('/logout','AdminController@logout');

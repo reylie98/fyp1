@@ -10,6 +10,7 @@ use App\Category;
 use App\Product;
 use App\ProductsAttribute;
 use App\ProductsImage;
+use App\Coupon;
 use Image;
 use DB;
 
@@ -358,5 +359,14 @@ class ProductsController extends Controller
             return redirect('cart')->with('flash_message_error', 'Product quantity is not enough !');
         }
 
+    }
+    Public function applyCoupon(Request $request){
+        $data = $request->all();
+        $checkCoupon = Coupon::where('coupon_code',$data['couponcode'])->count();
+        if($checkCoupon == 0){
+            return redirect()->back()->with('flash_message_error', 'Coupon is not valid');
+        }else{
+            echo "success";
+        }
     }
 }
