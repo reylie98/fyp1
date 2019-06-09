@@ -239,6 +239,13 @@ $(document).ready(function(){
 		}
 		return false;
 })
+$("#deleteCoupon").click(function(){
+	if(confirm('Are you sure you want to delete this coupon ?')){
+		return true;
+	}
+	return false;
+})
+
 $(document).ready(function(){
 	var maxField = 10; //Input fields increment limitation
 	var addButton = $('.add_button'); //Add button selector
