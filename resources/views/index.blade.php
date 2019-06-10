@@ -13,7 +13,7 @@
 						
 						<div class="carousel-inner">
 							<div class="item active">
-								<img src="images/Frontendimages/imageslider/test.png">
+								<img src="{{asset('images/Frontendimages/imageslider/test.png')}}">
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
