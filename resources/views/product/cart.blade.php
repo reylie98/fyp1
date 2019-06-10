@@ -93,7 +93,13 @@
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Total <span><?php echo $totalamount ; ?></span></li>
+							@if(!empty(Session::get('couponamount')))
+								<li>Sub Total <span><?php echo $totalamount ; ?></span></li>
+								<li>Discount <span><?php echo Session::get('couponamount') ; ?></span></li>
+								<li>Grand Total <span><?php echo $totalamount - Session::get('couponamount') ; ?></span></li>
+							@else
+								<li>Grand Total <span><?php echo $totalamount; ?></span></li>
+							@endif
 						</ul>
 							<a class="btn btn-default update" href="">Update</a>
 							<a class="btn btn-default check_out" href="">Check Out</a>

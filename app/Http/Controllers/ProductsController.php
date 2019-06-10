@@ -361,12 +361,44 @@ class ProductsController extends Controller
 
     }
     Public function applyCoupon(Request $request){
+        Session::forget('couponamount');
+        Session::forget('couponcode');
+
         $data = $request->all();
         $checkCoupon = Coupon::where('coupon_code',$data['couponcode'])->count();
         if($checkCoupon == 0){
             return redirect()->back()->with('flash_message_error', 'Coupon is not valid');
         }else{
-            echo "success";
+            //get coupon status
+           $coupondetails = Coupon::where('coupon_code',$data['couponcode'])->first();
+           if($coupondetails->status ==0){
+            return redirect()->back()->with('flash_message_error', 'Coupon is Inactive');
+           }
+           //check expired date
+           $expirydate = $coupondetails->expiry_date;
+           $currentdate = date('y-m-d');
+           if($expirydate < $currentdate){
+            return redirect()->back()->with('flash_message_error', 'Coupon is Expired');  
+           }
+           //get cart total
+           $session_id = Session::get('session_id');
+           $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+           $totalamount = 0;
+            foreach($userCart as $item){
+                $totalamount = $totalamount + ($item->price * $item->quantity);
+            }
+           //if coupon eligible
+          
+           if($coupondetails->amount_type=="Fixed"){
+               $couponamount = $coupondetails->amount;
+           }else{
+               $couponamount = $totalamount * ($coupondetails->amount/100);
+           }
+           //add coupon amount on session
+           Session::put('couponamount',$couponamount);
+           Session::put('couponcode',$data['couponcode']);
+
+           return redirect()->back()->with('flash_message_success', 'Coupon code successfully applied');  
         }
     }
 }
