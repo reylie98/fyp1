@@ -63,3 +63,41 @@ $(document).ready(function(){
 		$(".mainImage").attr("src", image);
 	});
 });
+
+$().ready(function(){
+	//validate signup form
+	$("#register").validate({
+		rules:{
+			name:{
+				required: true,
+				minlength: 2,
+				accept: "[a-zA-z]+"
+			},
+			password:{
+				required: true,
+				minlength: 6
+			},
+			email:{
+				required: true,
+				email:true,
+				remote:"/checkemail"
+			}
+		},
+		messages:{
+			name:{
+				required:"Please enter your Name",
+				lettersonly:"your name should be in letter only !",
+				accept:"your name should be A-Z only !"
+			},
+			password:{
+				required:"Please provide your password",
+				minlength:"Your Password must be at least 6 characters"
+			},
+			email:{
+				required:"Please enter your email",
+				email:"please enter valid email",
+				remote:"Email already Exist!"
+			}
+		}
+	})
+});

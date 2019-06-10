@@ -31,8 +31,14 @@ Route::get('/cart/deleteproduct/{id}','ProductsController@deletecart');
 //delete product from cart
 Route::get('/cart/updatequantity/{id}/{quantity}','ProductsController@updatequantity');
 
-//coupon
+//apply coupon
 Route::post('/cart/applycoupon','ProductsController@applyCoupon');
+
+//users register
+Route::match(['get','post'],'/register','UsersController@register');
+
+//check email
+Route::match(['get','post'],'/checkemail','UsersController@checkemail');
 
 Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/dashboard','AdminController@dashboard');

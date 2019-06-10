@@ -39,5 +39,6 @@
 	<script src="{{asset('js/FrontendJS/price-range.js')}}"></script>
     <script src="{{asset('js/FrontendJS/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('js/FrontendJS/main.js')}}"></script>
+    <script src="{{ asset('js/FrontendJS/jquery.validate.js') }}"></script> 
 </body>
 </html>
