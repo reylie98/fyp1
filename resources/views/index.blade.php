@@ -13,16 +13,7 @@
 						
 						<div class="carousel-inner">
 							<div class="item active">
-								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>Free E-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="{{asset('images/Frontendimages/home/girl1.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('images/Frontendimages/home/pricing.png')}}"  class="pricing" alt="" />
-								</div>
+								<img src="images/Frontendimages/imageslider/test.png">
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
