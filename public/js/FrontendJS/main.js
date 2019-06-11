@@ -100,4 +100,11 @@ $().ready(function(){
 			}
 		}
 	})
+	//password strength
+	$('#myPassword').passtrength({
+		minChars: 4,
+		passwordToggle: true,
+		tooltip: true,
+		eyeImg: "/images/Frontendimages/eye.svg"
+	});
 });

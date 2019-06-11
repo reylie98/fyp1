@@ -12,7 +12,8 @@
     <link href="{{asset('css/frontendcss/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('css/frontendcss/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('css/frontendcss/main.css')}}" rel="stylesheet">
-	<link href="{{asset('css/frontendcss/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('css/frontendcss/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('css/frontendcss/passtrength.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -40,5 +41,6 @@
     <script src="{{asset('js/FrontendJS/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('js/FrontendJS/main.js')}}"></script>
     <script src="{{ asset('js/FrontendJS/jquery.validate.js') }}"></script> 
+    <script src="{{ asset('js/FrontendJS/passtrength.js') }}"></script> 
 </body>
 </html>
