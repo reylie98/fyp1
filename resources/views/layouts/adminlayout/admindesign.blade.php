@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{{asset('css/backendcss/fullcalendar.css')}}" />
 <link rel="stylesheet" href="{{asset('css/backendcss//matrix-style.css')}}" />
 <link rel="stylesheet" href="{{asset('css/backendcss/matrix-media.css')}}" />
-<link href="{{asset('Fonts/Backendfonts/css/font-awesome.css" rel="stylesheet')}}" />
+<link href="{{ asset('css/backendcss/font-awesome.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="{{asset('css/backendcss/jquery.gritter.css')}}" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 

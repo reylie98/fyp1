@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="{{ asset('css/backendcss/bootstrap.min.css') }}"  />
 		<link rel="stylesheet" href="{{ asset('css/backendcss/bootstrap-responsive.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/backendcss/matrix-login.css') }}" />
-        <link href="{{ asset('Fonts/Backendfonts/fontsfont-awesome/css/font-awesome.css" rel="stylesheet') }}" />
+        <link href="{{ asset('css/backendcss/font-awesome.css') }}" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
     </head>
