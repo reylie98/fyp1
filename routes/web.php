@@ -37,8 +37,16 @@ Route::post('/cart/applycoupon','ProductsController@applyCoupon');
 //users register
 Route::match(['get','post'],'/register','UsersController@register');
 
+//userlogin
+Route::get('/login','UsersController@login');
+
+//retrieve login and register page
+Route::get('/logon','UsersController@logon');
+
 //check email
 Route::match(['get','post'],'/checkemail','UsersController@checkemail');
+//logout
+Route::get('/userlogout','UsersController@logout');
 
 Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/dashboard','AdminController@dashboard');

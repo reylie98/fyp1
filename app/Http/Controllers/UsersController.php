@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use Auth;
 class UsersController extends Controller
 {
+    public function logon(){
+        return view('users.register');
+    }
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();
@@ -15,10 +18,17 @@ class UsersController extends Controller
         if($checkusers>0){
             return redirect()->back()->with('flash_message_error','Email already exist !');
         }else{
-            echo "Success";
+            $users = new User;
+            $users->name =$data['name'];
+            $users->email=$data['email'];
+            $users->password= bcrypt($data['myPassword']);
+            $users->save();
+            if(Auth::attempt(['email'=>$data['email'],'password'=>$data['myPassword']])){
+                return redirect('/cart');
+            }
         }
         }
-        return view('users.register');
+
     }
     public function checkemail(Request $request){
         $data = $request->all();
@@ -28,5 +38,9 @@ class UsersController extends Controller
         }else{
             echo "true"; die;
         }
+    }
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
     }
 }
