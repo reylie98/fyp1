@@ -18,13 +18,9 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
-							<span>
-								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
-							</span>
+						<form id="loginform" name="loginfotm" method="post" action="{{url('/userlogin')}}">{{csrf_field()}}
+							<input name="email" Id="email" type="email" placeholder="Email Address" required  />
+							<input name="password" id="password" type="password" placeholder="Password" required minlength="6" />
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>
 					</div><!--/login form-->

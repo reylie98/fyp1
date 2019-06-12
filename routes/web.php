@@ -47,6 +47,8 @@ Route::get('/logon','UsersController@logon');
 Route::match(['get','post'],'/checkemail','UsersController@checkemail');
 //logout
 Route::get('/userlogout','UsersController@logout');
+//login
+Route::post('/userlogin','UsersController@login');
 
 Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/dashboard','AdminController@dashboard');
