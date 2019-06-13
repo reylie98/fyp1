@@ -50,9 +50,12 @@ Route::get('/userlogout','UsersController@logout');
 //login
 Route::post('/userlogin','UsersController@login');
 
+
 Route::group(['middleware'=> ['frontlogin']],function(){
     //account
     Route::match(['get','post'],'account','UsersController@account');
+    //check user pwd
+    Route::get('/checkpwd1','UsersController@checkpwd');
 });
 
 Route::group(['middleware'=> ['auth']],function(){

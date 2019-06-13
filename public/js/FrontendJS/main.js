@@ -107,4 +107,21 @@ $().ready(function(){
 		tooltip: true,
 		eyeImg: "/images/Frontendimages/eye.svg"
 	});
+	$("#currentpwd").keyup(function(){
+		var currentpwd = $(this).val();
+		$.ajax({
+			type:'get',
+			url:'/checkpwd1',
+			data:{currentpwd:currentpwd},
+			success:function(resp){
+				if(resp=="false"){
+					$("#chkPwd").html("<font color='red'>Current Password is incorrect</font>")
+				}else if(resp=="true"){
+					$("#chkPwd").html("<font color='green'>Current Password is correct</font>")
+				}
+			},error:function(){
+				alert("Error");
+			}
+		});
+	});
 });

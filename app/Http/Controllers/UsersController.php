@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\Hash;    
 class UsersController extends Controller
 {
     public function logon(){
@@ -60,5 +61,17 @@ class UsersController extends Controller
     }
     public function account(){
         return view('users.account');
+    }
+    public function checkpwd(Request $request){
+        $data=$request->all();
+        //echo "<pre>"; print_r($data); die;
+        $currentpwd1= $data['currentpwd'];
+        $userid = Auth::User()->id;
+        $checkpwd = User::where('id',$userid)->first();
+        if(Hash::check($currentpwd1,$checkpwd->password)){
+            echo"true"; die;
+        }else{
+            echo"false"; die;
+        }
     }
 }
