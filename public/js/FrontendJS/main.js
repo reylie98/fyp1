@@ -64,6 +64,7 @@ $(document).ready(function(){
 	});
 });
 
+
 $().ready(function(){
 	//validate signup form
 	$("#register").validate({
@@ -107,6 +108,35 @@ $().ready(function(){
 		tooltip: true,
 		eyeImg: "/images/Frontendimages/eye.svg"
 	});
+	$("#passwordform").validate({
+		rules:{
+			currentpwd:{
+				required: true,
+				minlength:6,
+				maxlength:20
+			},
+			newpwd:{
+				required: true,
+				minlength:6,
+				maxlength:20
+			},
+			confirmpwd:{
+				required:true,
+				minlength:6,
+				maxlength:20,
+				equalTo:"#newpwd"
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
 	$("#currentpwd").keyup(function(){
 		var currentpwd = $(this).val();
 		$.ajax({
@@ -125,3 +155,4 @@ $().ready(function(){
 		});
 	});
 });
+

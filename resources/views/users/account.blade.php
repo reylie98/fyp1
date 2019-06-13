@@ -26,7 +26,7 @@
 				<div class="col-sm-4">
 					<div class="signup-form">
 						<h2>Update Password</h2>
-						<form id="passwordform" name="passwordform" method="post" action="{{url('/updatepswd')}}">{{csrf_field()}}
+						<form id="passwordform" name="passwordform" method="post" action="{{url('/updateuserpwd')}}">{{csrf_field()}}
 							<input type="text" name="currentpwd" id="currentpwd" placeholder="Current Password">
 							<span id="chkPwd"></span>
 							<input type="text" name="newpwd" id="newpwd" placeholder="New Password">
