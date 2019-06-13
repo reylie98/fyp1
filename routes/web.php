@@ -50,6 +50,11 @@ Route::get('/userlogout','UsersController@logout');
 //login
 Route::post('/userlogin','UsersController@login');
 
+Route::group(['middleware'=> ['frontlogin']],function(){
+    //account
+    Route::match(['get','post'],'account','UsersController@account');
+});
+
 Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::get('/admin/settings','AdminController@settings');
