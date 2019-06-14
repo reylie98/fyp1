@@ -12,6 +12,8 @@ use App\ProductsAttribute;
 use App\ProductsImage;
 use App\Coupon;
 use App\Country;
+use App\Adress;
+use App\Bill;
 use Image;
 use DB;
 
@@ -409,8 +411,60 @@ class ProductsController extends Controller
            return redirect()->back()->with('flash_message_success', 'Coupon code successfully applied');  
         }
     }
-    public function checkout(){
+    public function checkout(Request $request){
         $countries=Country::get();
+        $userid= Auth::user()->id;
+        $email=Auth::user()->email;
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+
+            //check shipping address
+            $shippingcount = Adress::where('user_id',$userid)->count();
+            
+            if(empty($data['billingname']) || empty($data['billingaddress'])|| empty($data['billingcity']) 
+            || empty($data['billingstate'])|| empty($data['billingcountry'])|| empty($data['billingcode'])
+            || empty($data['billingnumber']) || empty($data['shippingname']) || empty($data['shippingaddress'])
+            || empty($data['shippingcity']) || empty($data['shippingstate']) || empty($data['shippingcountry'])
+            || empty($data['shippingcode']) || empty($data['shippingnumber'])){
+                return redirect()->back()->with('flash_message_error','Please fill in all the field');
+            }
+            if($shippingcount>0){
+                Adress::where('user_id',$userid)->update(['name'=>$data['shippingname'],'address'=>$data['shippingaddress']
+                ,'city'=>$data['shippingcity'],'state'=>$data['shippingstate'],'country'=>$data['shippingcountry']
+                ,'postcode'=>$data['shippingcode'],'mobile'=>$data['shippingnumber']]);
+
+                Bill::where('user_id',$userid)->update(['name'=>$data['billingname'],'address'=>$data['billingaddress']
+                ,'city'=>$data['billingcity'],'state'=>$data['billingstate'],'country'=>$data['billingcountry']
+                ,'postcode'=>$data['billingcode'],'mobile'=>$data['billingnumber']]);
+            }else{
+                $address = new Adress;
+                $address->user_id = $userid;
+                $address->user_email=$email;
+                $address->name=$data['shippingname'];
+                $address->address=$data['shippingaddress'];
+                $address->city=$data['shippingcity'];
+                $address->state=$data['shippingstate'];
+                $address->country=$data['shippingcountry'];
+                $address->postcode=$data['shippingcode'];
+                $address->mobile=$data['shippingnumber'];
+                $address->save();
+
+                $billing = new Bill;
+                $billing->user_id = $userid;
+                $billing->user_email=$email;
+                $billing->name=$data['billingname'];
+                $billing->address=$data['billingaddress'];
+                $billing->city=$data['billingcity'];
+                $billing->state=$data['billingstate'];
+                $billing->country=$data['billingcountry'];
+                $billing->postcode=$data['billingcode'];
+                $billing->mobile=$data['billingnumber'];
+                $billing->save();
+            }
+
+
+        }
         return view('product.checkout')->with(compact('countries'));
     }
 }
