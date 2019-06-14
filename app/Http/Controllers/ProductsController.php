@@ -11,6 +11,7 @@ use App\Product;
 use App\ProductsAttribute;
 use App\ProductsImage;
 use App\Coupon;
+use App\Country;
 use Image;
 use DB;
 
@@ -407,5 +408,9 @@ class ProductsController extends Controller
 
            return redirect()->back()->with('flash_message_success', 'Coupon code successfully applied');  
         }
+    }
+    public function checkout(){
+        $countries=Country::get();
+        return view('product.checkout')->with(compact('countries'));
     }
 }
