@@ -108,6 +108,7 @@
 								<p class="cart_total_price">MYR {{$cart->price*$cart->quantity}}</p>
 							</td>
                         </tr>
+                        <?php $totalamount = $totalamount + ($cart->price*$cart->quantity); ?>
                         @endforeach
 						<tr>
 							<td colspan="4">&nbsp;</td>
@@ -115,19 +116,25 @@
 								<table class="table table-condensed total-result">
 									<tr>
 										<td>Cart Sub Total</td>
-										<td>$59</td>
-									</tr>
-									<tr>
-										<td>Exo Tax</td>
-										<td>$2</td>
+										<td>MYR {{$totalamount}}</td>
 									</tr>
 									<tr class="shipping-cost">
+                                        <td>Discount Amount</td>
+										<td>
+                                        @if(!empty(Session::get('couponamount')))
+                                            MYR {{Session::get('couponamount')}}
+                                        @else
+                                            MYR 0
+                                        @endif
+                                        </td>										
+                                    </tr>
+                                    <tr class="shipping-cost">
 										<td>Shipping Cost</td>
 										<td>Free</td>										
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>$61</span></td>
+										<td><span>{{$totalamount-Session::get('couponamount')}}</span></td>
 									</tr>
 								</table>
 							</td>
