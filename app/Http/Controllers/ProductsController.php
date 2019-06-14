@@ -14,6 +14,7 @@ use App\Coupon;
 use App\Country;
 use App\Adress;
 use App\Bill;
+use App\User;
 use Image;
 use DB;
 
@@ -422,6 +423,9 @@ class ProductsController extends Controller
             //check shipping address
             $shippingcount = Adress::where('user_id',$userid)->count();
             
+            //update cart with user email
+            $session_id=Session::get('session_id');
+            DB::table('cart')->where(['session_id'=>$session_id])->update(['user_email'=>$email]);
             if(empty($data['billingname']) || empty($data['billingaddress'])|| empty($data['billingcity']) 
             || empty($data['billingstate'])|| empty($data['billingcountry'])|| empty($data['billingcode'])
             || empty($data['billingnumber']) || empty($data['shippingname']) || empty($data['shippingaddress'])
@@ -462,9 +466,19 @@ class ProductsController extends Controller
                 $billing->mobile=$data['billingnumber'];
                 $billing->save();
             }
+            return redirect()->action('ProductsController@revieworder');
 
 
         }
         return view('product.checkout')->with(compact('countries'));
+    }
+    public function revieworder(){
+        $userid = Auth::user()->id;
+        $email = Auth::user()->email;
+        $userdetail = User::where ('id',$userid)->first();
+        $shippingdetails= Adress::where('user_id',$userid)->first();
+        $billingdetails = Bill::where('user_id',$userid)->first();
+
+        return view('product.revieworder')->with(compact('userdetail','shippingdetails','billingdetails'));
     }
 }

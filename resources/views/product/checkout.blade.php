@@ -2,6 +2,12 @@
 @section('content')
 <section id="form" style="margin-top:0px"><!--form-->
 		<div class="container">
+            <div class="breadcrumbs">
+                    <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Check Out</li>
+                    </ol>
+            </div>
         @if(Session::has('flash_message_error')) 
 		    <div class="alert alert-danger alert-block">
 				<button type="button" class="close" data-dismiss="alert">×</button>	
