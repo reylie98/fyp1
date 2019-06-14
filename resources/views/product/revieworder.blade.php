@@ -134,25 +134,31 @@
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>{{$totalamount-Session::get('couponamount')}}</span></td>
+										<td><span>{{$grandtotal=$totalamount-Session::get('couponamount')}}</span></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="payment-options">
-					<span>
-						<label><input type="checkbox"> Direct Bank Transfer</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Check Payment</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Paypal</label>
-					</span>
-				</div>
+            </div>
+            <form name="paymentform" id="paymentform" method="post" action="{{url('/placeorder')}}">{{csrf_field()}}
+                <input type="hidden" name="grandtotal" value="{{$grandtotal}}">
+                <div class="payment-options">
+                        <span>
+                            <label><strong>Select Payment Method :</strong></label>
+                        </span>
+                        <span>
+                            <label><input type="radio" name="paymentmethod" id="cod" value="cod"> Cash on Delivery</label>
+                        </span>
+                        <span>
+                            <label><input type="radio" name="paymentmethod" id="paypal" value="paypal"> Paypal</label>
+                        </span>
+                        <span style="float:right;">
+                            <button type="submit" class="btn btn-warning" onClick="return selectPaymentMethod();">Place Order</button>
+                        </span>
+                </div>
+            </form>
 		</div>
 	</section> <!--/#cart_items-->
 

@@ -485,4 +485,11 @@ class ProductsController extends Controller
         }
         return view('product.revieworder')->with(compact('userdetail','shippingdetails','billingdetails','userCart'));
     }
+    public function placeorder(Request $request){
+        if($request->isMethod('post')){
+            $data=$request->all();
+            dd($data);
+        }
+
+    }
 }

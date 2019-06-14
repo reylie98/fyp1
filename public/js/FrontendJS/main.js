@@ -177,3 +177,13 @@ $().ready(function(){
 	});
 });
 
+function selectPaymentMethod(){
+	if($('#paypal').is(':checked')||$('#cod').is(':checked')){
+		// alert("checked");
+	}else{
+		alert("Please Select the Payment Method");
+		return false;
+	}
+	
+}
+
