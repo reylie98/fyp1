@@ -154,5 +154,26 @@ $().ready(function(){
 			}
 		});
 	});
+
+	//Copy billing to shipping
+	$("#billship").click(function(){
+		if(this.checked){
+			$("#shippingname").val($("#billingname").val());
+			$("#shippingaddress").val($("#billingaddress").val());
+			$("#shippingcity").val($("#billingcity").val());
+			$("#shippingstate").val($("#billingstate").val());
+			$("#shippingcountry").val($("#billingcountry").val());
+			$("#shippingcode").val($("#billingcode").val());
+			$("#shippingnumber").val($("#billingnumber").val());
+		}else{
+			$("#shippingname").val('');
+			$("#shippingaddress").val('');
+			$("#shippingcity").val('');
+			$("#shippingstate").val('');
+			$("#shippingcountry").val('');
+			$("#shippingcode").val('');
+			$("#shippingnumber").val('');
+		}
+	});
 });
 
