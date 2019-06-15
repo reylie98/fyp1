@@ -342,8 +342,15 @@ class ProductsController extends Controller
         return redirect('cart')->with('flash_message_success','Product Successfully Added to cart');
     }
     public function cart(){
-        $session_id = Session::get('session_id');
-        $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+        
+        if(Auth::check()){
+            $user_email=Auth::user()->email;
+            $userCart = DB::table('cart')->where(['user_email'=>$user_email])->get();
+        }else{
+            $session_id = Session::get('session_id');
+            $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+        }
+       
         foreach($userCart as $key => $product){
             $productDetails = Product::where('id',$product->product_id)->first();
             $userCart[$key]->image = $productDetails->image;
