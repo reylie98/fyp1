@@ -568,6 +568,7 @@ class ProductsController extends Controller
 
     }
     public function thanks(Request $request){
+        $email=Auth::user()->email;
         return view('product.thanks');
     }
 }
