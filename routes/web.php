@@ -66,6 +66,8 @@ Route::group(['middleware'=> ['frontlogin']],function(){
     Route::match(['get','post'],'/placeorder','ProductsController@placeorder');
     //getthanks page 
     Route::get('/thanks','ProductsController@thanks');
+    //users order page
+    Route::get('/orders','ProductsController@orders');
 });
 
 Route::group(['middleware'=> ['auth']],function(){

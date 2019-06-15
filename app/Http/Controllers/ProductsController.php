@@ -569,6 +569,14 @@ class ProductsController extends Controller
     }
     public function thanks(Request $request){
         $email=Auth::user()->email;
+        DB::table('cart')->where('user_email',$email)->delete();
         return view('product.thanks');
+    }
+    public function orders(){
+        $userid = Auth::user()->id;
+        $orders = Order::with('orders')->where('user_id',$userid)->get();
+        $orders = json_decode(Json_encode($orders));
+        // echo "<pre>"; print_r($orders);
+        return view('product.order')->with(compact('orders'));
     }
 }
