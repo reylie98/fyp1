@@ -15,7 +15,7 @@ use App\Country;
 use App\Adress;
 use App\Bill;
 use App\Order;
-use App\OrderProduct;
+use App\OrdersProduct;
 use App\User;
 use Image;
 use DB;
@@ -538,6 +538,23 @@ class ProductsController extends Controller
             $order->payment_method = $data['paymentmethod'];
             $order->grand_total = $data['grandtotal'];
             $order->save();
+
+            //get last insert id
+            $orderid= DB::getpdo()->lastInsertId();
+            $cartproducts=DB::table('cart')->where(['user_email'=>$email])->get();
+            foreach($cartproducts as $product){
+                $cartproduct = new OrdersProduct;
+                $cartproduct->user_id = $userid;
+                $cartproduct->order_id = $orderid;
+                $cartproduct->product_id= $product->product_id;
+                $cartproduct->product_name= $product->product_name;
+                $cartproduct->product_code= $product->product_code;
+                $cartproduct->product_color= $product->product_color;
+                $cartproduct->product_size= $product->size;
+                $cartproduct->product_price= $product->price;
+                $cartproduct->product_qty= $product->quantity;
+                $cartproduct->save();
+            }
 
         }
 
