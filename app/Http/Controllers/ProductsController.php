@@ -14,6 +14,8 @@ use App\Coupon;
 use App\Country;
 use App\Adress;
 use App\Bill;
+use App\Order;
+use App\OrderProduct;
 use App\User;
 use Image;
 use DB;
@@ -401,6 +403,15 @@ class ProductsController extends Controller
            //get cart total
            $session_id = Session::get('session_id');
            $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+           if(Auth::check()){
+                $user_email=Auth::user()->email;
+                $userCart = DB::table('cart')->where(['user_email'=>$user_email])->get();
+            }else{
+                $session_id = Session::get('session_id');
+                $userCart = DB::table('cart')->where(['session_id'=>$session_id])->get();
+             }
+
+
            $totalamount = 0;
             foreach($userCart as $item){
                 $totalamount = $totalamount + ($item->price * $item->quantity);
@@ -495,7 +506,39 @@ class ProductsController extends Controller
     public function placeorder(Request $request){
         if($request->isMethod('post')){
             $data=$request->all();
-            dd($data);
+            $userid=Auth::user()->id;
+            $email=Auth::user()->email;
+
+            //get shipping address
+            $shipping= Adress::where(['user_email'=>$email])->first();
+            if(empty(Session::get('couponcode'))){
+                $couponcode = ''; 
+             }else{
+                $couponcode = Session::get('couponcode'); 
+             }
+             if(empty(Session::get('couponamount'))){
+                $couponamount = ''; 
+             }else{
+                $couponamount = Session::get('couponamount'); 
+             }
+            $order=new Order;
+            $order->user_id = $userid;
+            $order->user_email = $email;
+            $order->name = $shipping->name;
+            $order->address= $shipping->address;
+            $order->city= $shipping->city;
+            $order->state = $shipping->state;
+            $order->postcode = $shipping->postcode;
+            $order->country= $shipping->country;
+            $order->mobile = $shipping->mobile;
+            $order->coupon_code = $couponcode;
+            $order->coupon_amount = $couponamount;
+            $order->order_status = "New";
+            $order->shippingcharge = 0;
+            $order->payment_method = $data['paymentmethod'];
+            $order->grand_total = $data['grandtotal'];
+            $order->save();
+
         }
 
     }
