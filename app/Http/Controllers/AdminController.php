@@ -73,5 +73,8 @@ class AdminController extends Controller
         }
 
     } 
+    public function knowledgebase(){
+        return view('cs.knowledgebase');
+    }
 
 }

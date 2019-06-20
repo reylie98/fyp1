@@ -314,7 +314,6 @@ class ProductsController extends Controller
         Session::forget('couponcode');
 
         $data = $request->all();
-        //dd($data);
         if(empty(Auth::user()->email)){
             $data['user_email']='';
         }else{

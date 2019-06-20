@@ -71,8 +71,9 @@ Route::group(['middleware'=> ['frontlogin']],function(){
 });
 
 Route::group(['middleware'=> ['auth']],function(){
+   
     Route::group(['middleware'=> ['isAdmin']],function(){
-        Route::get('/admin/dashboard','AdminController@dashboard');
+    Route::get('/admin/dashboard','AdminController@dashboard');
     Route::get('/admin/settings','AdminController@settings');
     Route::get('/admin/check-pwd','AdminController@chkPassword');
     Route::match(['get','post'],'/admin/updatepwd','AdminController@updatePassword');
@@ -103,6 +104,7 @@ Route::group(['middleware'=> ['auth']],function(){
     
     Route::group(['middleware'=> ['isCS']],function(){
         Route::get('/cs/dashboard','AdminController@csdashboard');
+        Route::get('/cs/knowledgebase','AdminController@knowledgebase');
     });
     
 
