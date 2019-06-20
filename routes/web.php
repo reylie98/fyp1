@@ -71,7 +71,8 @@ Route::group(['middleware'=> ['frontlogin']],function(){
 });
 
 Route::group(['middleware'=> ['auth']],function(){
-    Route::get('/admin/dashboard','AdminController@dashboard');
+    Route::group(['middleware'=> ['isAdmin']],function(){
+        Route::get('/admin/dashboard','AdminController@dashboard');
     Route::get('/admin/settings','AdminController@settings');
     Route::get('/admin/check-pwd','AdminController@chkPassword');
     Route::match(['get','post'],'/admin/updatepwd','AdminController@updatePassword');
@@ -97,7 +98,18 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/viewcoupon','CouponsController@viewCoupons');
     Route::get('/admin/deletecoupon/{id}','CouponsController@deleteCoupon');
     Route::match(['get','post'],'/admin/editcoupon/{id}','CouponsController@editCoupon');
+    });
+    
+    
+    Route::group(['middleware'=> ['isCS']],function(){
+        Route::get('/cs/dashboard','AdminController@csdashboard');
+    });
+    
 
 });
+// Route::get('/cs/dashboard','AdminController@csdashboard')->middleware('isCS');
+
 
 Route::get('/logout','AdminController@logout');
+Route::get('/logout1','AdminController@logout1');
+Route::get('/logout2','AdminController@logout2');

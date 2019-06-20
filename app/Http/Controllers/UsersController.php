@@ -25,7 +25,7 @@ class UsersController extends Controller
             $users->email=$data['email'];
             $users->password= bcrypt($data['myPassword']);
             $users->save();
-            if(Auth::attempt(['email'=>$data['email'],'password'=>$data['myPassword']])){
+            if(Auth::attempt(['email'=>$data['email'],'password'=>$data['myPassword'],])){
                 Session::put('frontSession',$data['email']);
                 return redirect('/cart');
             }
@@ -51,7 +51,7 @@ class UsersController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             
-            if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password']])){
+            if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'admin'=>'0'])){
                 Session::put('frontSession',$data['email']);
                 return redirect('/cart');
             }else{

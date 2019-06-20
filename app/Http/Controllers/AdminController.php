@@ -15,6 +15,8 @@ class AdminController extends Controller
             $data = $request->input();
             if (Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'admin'=>'1'])){
                     return redirect ('/admin/dashboard');
+            }if (Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'admin'=>'2'])){
+                return redirect ('/cs/dashboard');
             }else{
                 return redirect ('/admin')->with('flash_message_error','invalid Username or Password');
             }
@@ -25,7 +27,18 @@ class AdminController extends Controller
     public function dashboard(){
         return view ('admin.dashboard');
     }
+    public function csdashboard(){
+        return view ('cs.csdashboard');
+    }
     public function logout(){
+        Session::flush();
+        return redirect('/admin')->with('flash_message_error','Please Login use Customer Service Account');
+    }
+    public function logout2(){
+        Session::flush();
+        return redirect('/admin')->with('flash_message_error','Please Login use Admin Account');
+    }
+    public function logout1(){
         Session::flush();
         return redirect('/admin');
     }
@@ -60,4 +73,5 @@ class AdminController extends Controller
         }
 
     } 
+
 }
