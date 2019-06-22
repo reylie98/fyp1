@@ -53,7 +53,7 @@
                     </td>
                     <td>{{ $ticket->created_at }}</td>
                     <td class="center">
-                        <a href="" class="btn btn-centered btn-primary btn-mini">Edit</a>
+                        <a href="" class="btn btn-primary btn-mini" style="margin-left:30%;">Edit</a>
                     </td>
                 </tr>   
 

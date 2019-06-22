@@ -44,7 +44,7 @@
 									<h2>{{$productDetails -> product_name}}</h2>
 									<p>Code: {{$productDetails -> product_code}}</p>
 									<p>
-										<select id = "sellsize" name="size" style="width:150px;">
+										<select id = "sellsize" name="size" style="width:150px;" Required>
 												<option value="">Select Size </option>
 												@foreach($productDetails->attributes as $sizes)
 												<option value="{{$productDetails->id}}-{{$sizes->size}}">{{$sizes->size}}</option>
@@ -57,7 +57,7 @@
 										<label>Quantity:</label>
 										<input type="text" name="quantity" value="1" />
 										@if($totalstock>0)
-											<button type="submit" class="btn btn-fefault cart" id="cartButton">
+											<button type="submit" class="btn btn-fefault cart" id="cartButton"> 
 												<i class="fa fa-shopping-cart"></i>
 												Add to cart
 											</button>

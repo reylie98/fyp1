@@ -94,9 +94,18 @@
 					<div class="total_area">
 						<ul>
 							@if(!empty(Session::get('couponamount')))
-								<li>Sub Total <span><?php echo $totalamount ; ?></span></li>
-								<li>Discount <span><?php echo Session::get('couponamount') ; ?></span></li>
-								<li>Grand Total <span><?php echo $totalamount - Session::get('couponamount') ; ?></span></li>
+								<?php
+								$grandtotal = $totalamount-Session::get('couponamount');
+								if($grandtotal<0){
+									$grandtotal = 0;
+								}
+
+								?>
+								<li>Sub Total <span>MYR <?php echo $totalamount ; ?></span></li>
+								<li>Discount MYR<span>MYR <?php echo Session::get('couponamount') ; ?></span></li>
+
+								<li>Grand Total MYR <span>MYR <?php echo $grandtotal; ?></span></li>
+
 							@else
 								<li>Grand Total <span><?php echo $totalamount; ?></span></li>
 							@endif

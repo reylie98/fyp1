@@ -24,10 +24,7 @@ Route::get('/products/{url}','ProductsController@product');
 Route::get('/product/{id}','ProductsController@products');
 //get product attribute price
 Route::get('/getproductprice','ProductsController@productprice');
-//add to cart
-Route::match(['get','post'],'/addcart','ProductsController@addtocart');
-Route::match(['get','post'],'/cart','ProductsController@cart');
-Route::get('/cart/deleteproduct/{id}','ProductsController@deletecart');
+
 //delete product from cart
 Route::get('/cart/updatequantity/{id}/{quantity}','ProductsController@updatequantity');
 
@@ -68,6 +65,11 @@ Route::group(['middleware'=> ['frontlogin']],function(){
     Route::get('/thanks','ProductsController@thanks');
     //users order page
     Route::get('/orders','ProductsController@orders');
+
+    //add to cart
+    Route::match(['get','post'],'/addcart','ProductsController@addtocart');
+    Route::match(['get','post'],'/cart','ProductsController@cart');
+    Route::get('/cart/deleteproduct/{id}','ProductsController@deletecart');
 });
 
 Route::group(['middleware'=> ['auth']],function(){

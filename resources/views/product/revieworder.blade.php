@@ -133,8 +133,14 @@
 										<td>Free</td>										
 									</tr>
 									<tr>
+                                        <?php 
+                                        $grandtotal = $totalamount-Session::get('couponamount');
+                                        if($grandtotal<0){
+                                            $grandtotal = 0;
+                                        }
+                                        ?>
 										<td>Total</td>
-										<td><span>{{$grandtotal=$totalamount-Session::get('couponamount')}}</span></td>
+										<td><span>{{$grandtotal}}</span></td>
 									</tr>
 								</table>
 							</td>
