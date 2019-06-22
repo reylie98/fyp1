@@ -99,12 +99,15 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/viewcoupon','CouponsController@viewCoupons');
     Route::get('/admin/deletecoupon/{id}','CouponsController@deleteCoupon');
     Route::match(['get','post'],'/admin/editcoupon/{id}','CouponsController@editCoupon');
+    Route::get('/admin/viewticket','AdminController@viewTicket');
     });
     
     
     Route::group(['middleware'=> ['isCS']],function(){
         Route::get('/cs/dashboard','AdminController@csdashboard');
         Route::get('/cs/knowledgebase','AdminController@knowledgebase');
+        Route::match(['get','post'],'/cs/addticket','ProductsController@addTicket');
+        Route::get('/cs/viewticket','ProductsController@viewTicket');
     });
     
 

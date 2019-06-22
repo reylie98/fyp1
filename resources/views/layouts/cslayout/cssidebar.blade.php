@@ -5,8 +5,8 @@
     <li class="active"><a href="{{url('/admin/dashboard')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Tickets</span> <span class="label label-important">2</span></a>
       <ul>
-        <li><a href="{{url('/admin/addcategory')}}">Add Tickets</a></li>
-        <li><a href="{{url('/admin/viewcategory')}}">View Tickets</a></li>
+        <li><a href="{{url('/cs/addticket')}}">Add Tickets</a></li>
+        <li><a href="{{url('/cs/viewticket')}}">View Tickets</a></li>
       </ul>
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Users</span> <span class="label label-important">2</span></a>

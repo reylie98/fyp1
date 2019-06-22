@@ -15,6 +15,7 @@ use App\Country;
 use App\Adress;
 use App\Bill;
 use App\Order;
+use App\Ticket;
 use App\OrdersProduct;
 use App\User;
 use Image;
@@ -577,5 +578,22 @@ class ProductsController extends Controller
         $orders = json_decode(Json_encode($orders));
         // echo "<pre>"; print_r($orders);
         return view('product.order')->with(compact('orders'));
+    }
+    public function addTicket(Request $request){
+        if ($request->isMethod('post')){
+            $data = $request->all();
+            $ticket = new Ticket;
+            $ticket->user_id = $data['userid'];
+            $ticket->title = $data['tickettitle'];
+            $ticket->description = $data['description'];
+            $ticket->comment = $data['Comment'];
+            $ticket->status = $data['statustype'];
+            $ticket->save();
+        }
+        return view ('cs.addticket');
+    }
+    public function viewTicket(){
+        $tickets = Ticket::get();
+        return view('cs.viewticket')->with(compact('tickets'));
     }
 }

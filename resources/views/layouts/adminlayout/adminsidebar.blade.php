@@ -21,6 +21,11 @@
         <li><a href="{{url('/admin/viewcoupon')}}">View Coupons</a></li>
       </ul>
     </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Tickets</span> <span class="label label-important">2</span></a>
+      <ul>
+        <li><a href="{{url('/admin/viewticket')}}">View Tickets</a></li>
+      </ul>
+    </li>
   </ul>
 </div>
 <!--sidebar-menu-->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use App\Ticket;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -75,6 +76,10 @@ class AdminController extends Controller
     } 
     public function knowledgebase(){
         return view('cs.knowledgebase');
+    }
+    public function viewTicket(){
+        $tickets = Ticket::get();
+        return view('admin.viewticket')->with(compact('tickets'));
     }
 
 }
