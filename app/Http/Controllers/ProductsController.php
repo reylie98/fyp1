@@ -29,6 +29,7 @@ class ProductsController extends Controller
             if(empty($data['category_id'])){
                 return redirect()->back()->with('flash_message_error','Please choose the Under Category!');
             }
+
             $product = new Product;
             $product->product_name = $data ['productname'];
             $product->product_code = $data ['productcode'];

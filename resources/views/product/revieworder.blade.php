@@ -10,28 +10,23 @@
                     <div class="row">
                         <div class="col-sm-4 col-sm-offset-1">
                             <div class="login-form"><!--login form-->
-                                <h2>Billing Address</h2>
-                                    <div class="form-group">
-                                    {{$billingdetails->name}}     
-                                    </div>
-                                    <div class="form-group">
-                                    {{$billingdetails->address}}  
-                                    </div>
-                                    <div class="form-group">
-                                        {{$billingdetails->city}}  
-                                    </div>
-                                    <div class="form-group">
-                                        {{$billingdetails->state}} 
-                                    </div>
-                                    <div class="form-group">
-                                        {{$billingdetails->country}} 
-                                    </div>
-                                    <div class="form-group">
-                                        {{$billingdetails->postcode}} 
-                                    </div>
-                                    <div class="form-group">
-                                        {{$billingdetails->mobile}}
-                                    </div>
+                                <h2><strong>Billing Address</strong></h2>
+                                <div class="form-group">
+                                    <label> Name : </label> 
+                                        <input id="billingname" name="billingname" value="{{$billingdetails->name}}" class="form-control" readonly/>  
+                                    <label> Address : </label>
+                                        <input id="billingname" name="billingname" value="{{$billingdetails->address}}" class="form-control" readonly/>
+                                    <label> Country : </label>
+                                        <input id="billingname" name="billingname" value="{{$billingdetails->country}}" class="form-control" readonly/>  
+                                    <label> City : </label>
+                                        <input id="billingname" name="billingname" value="{{$billingdetails->city}} " class="form-control" readonly/>  
+                                    <label> State : </label>
+                                        <input id="billingname" name="billingname" value="{{$billingdetails->state}} " class="form-control" readonly/>  
+                                    <label> Postcode : </label>
+                                        <input id="billingname" name="billingname" value="{{$billingdetails->postcode}}" class="form-control" readonly/> 
+                                    <label> Mobile Number : </label>
+                                        <input id="billingname" name="billingname" value="{{$billingdetails->mobile}}" class="form-control" readonly/>   
+                                </div>
                             </div><!--/login form-->
                         </div>
                         <div class="col-sm-1">
@@ -39,25 +34,23 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="signup-form"><!--sign up form-->
-                                <h2>Ship To</h2>
-                                    <div class="form-group">
-                                        {{$shippingdetails->name}}
-                                    </div>
-                                    <div class="form-group">
-                                        {{$shippingdetails->address}}
-                                    </div>
-                                    <div class="form-group">
-                                        {{$shippingdetails->city}}
-                                    </div>
-                                    <div class="form-group">
-                                        {{$shippingdetails->state}}
-                                    </div>
-                                    <div class="form-group">
-                                        {{$shippingdetails->postcode}}
-                                    </div>
-                                    <div class="form-group">
-                                        {{$shippingdetails->mobile}}
-                                    </div>
+                                <h2><strong>Ship To<strong></h2>
+                                <div class="form-group">
+                                    <label> Name : </label> 
+                                        <input id="billingname" name="billingname" value="{{$shippingdetails->name}}" class="form-control" readonly/> 
+                                    <label> Address : </label>
+                                        <input id="billingname" name="billingname" value="{{$shippingdetails->address}}" class="form-control" readonly/>  
+                                    <label> Country: </label> 
+                                        <input id="billingname" name="billingname" value="{{$shippingdetails->country}}" class="form-control" readonly/>   
+                                    <label> City : </label>
+                                        <input id="billingname" name="billingname" value="{{$shippingdetails->city}}" class="form-control" readonly/>  
+                                    <label> State : </label>
+                                        <input id="billingname" name="billingname" value="{{$shippingdetails->state}}" class="form-control" readonly/>  
+                                    <label> Postcode : </label>
+                                        <input id="billingname" name="billingname" value="{{$shippingdetails->postcode}}" class="form-control" readonly/> 
+                                    <label> Mobile Number : </label>
+                                        <input id="billingname" name="billingname" value="{{$shippingdetails->mobile}}" class="form-control" readonly/>   
+                                </div>
                             </div><!--/sign up form-->
                         </div>
                     </div>

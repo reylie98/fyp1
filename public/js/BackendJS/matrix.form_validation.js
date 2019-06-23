@@ -55,15 +55,26 @@ $(document).ready(function(){
 	});
 	// Add Category Validation
 	$("#add_category").validate({
+		
 		rules:{
 			categoryname:{
-				required:true
+				required:true,
+				accept: "[a-zA-Z]+"
 			},
 			description:{
 				required:true,
 			},
 			url:{
 				required:true,
+				accept: "[a-zA-Z]+"
+			}
+		},
+		messages:{
+			categoryname:{
+				accept:"your Category name should be A-Z only !"
+			},
+			url:{
+				accept:"your URL name should be A-Z only !"
 			}
 		},
 		errorClass: "help-inline",

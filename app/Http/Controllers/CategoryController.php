@@ -4,24 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\Hash;
 
 class CategoryController extends Controller
 {
     public function addCategory(Request $request){
         if($request->isMethod('post')){
             $data=$request->all();
+            $namecount = Category::where(['name'=>$data['categoryname']])->count();
+            $urlcount = Category::where(['url'=>$data['url']])->count();
+            if($namecount>0){
+                return redirect()->back()->with('flash_message_error','Category Name Already Exist');
+            }
+            if($urlcount>0){
+                return redirect()->back()->with('flash_message_error','URL Already Exist');
+            }
             if(empty($data['status'])){
                 $status= 0;
             }else{
                 $status = 1;
             }
-            $category = new Category;
-            $category->name = $data['categoryname'];
-            $category->parent_id = $data['parent_id'];
-            $category->description=$data['description'];
-            $category->url =$data['url'];
-            $category->status = $status;
-            $category->save();
+                $category = new Category;
+                $category->name = $data['categoryname'];
+                $category->parent_id = $data['parent_id'];
+                $category->description=$data['description'];
+                $category->url =$data['url'];
+                $category->status = $status;
+                $category->save();
             return redirect ('/admin/viewcategory')->with('flash_message_success','Category Added Successfully!');
         }
         $levels = Category::where(['parent_id'=>0])->get();
