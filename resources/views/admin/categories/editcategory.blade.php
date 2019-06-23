@@ -3,6 +3,12 @@
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Categories</a> <a href="#" class="current">Validation</a> </div>
+    @if(Session::has('flash_message_error')) 
+       <div class="alert alert-error alert-block">
+	        <button type="button" class="close" data-dismiss="alert">×</button>	
+            <strong>{!! session('flash_message_error') !!}</strong>
+        </div>
+    @endif   
     <h1>Edit Category</h1>
   </div>
   <div class="container-fluid"><hr>

@@ -37,6 +37,7 @@
                   <th>Comment</th>
                   <th>Status</th>
                   <th>Created Date</th>
+                  <th>Created/Updated by</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -52,8 +53,9 @@
                     @if($ticket->status==1) Done @else On Process @endif
                     </td>
                     <td>{{ $ticket->created_at }}</td>
+                    <td>{{ $ticket->admin }}</td>
                     <td class="centre">
-                        <a href="" class="btn btn-primary btn-mini">Edit</a>
+                        <a href="{{url('/cs/editticket/'.$ticket->id)}}" class="btn btn-primary btn-mini" style="margin-left:30%;">Edit</a>
                     </td>
                 </tr>   
 

@@ -37,6 +37,7 @@
                   <th>Expiry Date</th>
                   <th>Status</th>
                   <th>Created Date</th>
+                  <th>created/edited by</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -55,6 +56,7 @@
                     @if($coupon->status==1) Active @else Inactive @endif
                     </td>
                     <td>{{ $coupon->created_at }}</td>
+                    <td>{{ $coupon->admin}}</td>
                     <td class="centre">
                         <a href="{{url('/admin/editcoupon/'.$coupon->id) }}" class="btn btn-primary btn-mini">Edit</a> <a id="deleteCoupon" href="{{url('/admin/deletecoupon/'.$coupon->id)}}" class="btn btn-danger btn-mini">Delete</a>
                     </td>

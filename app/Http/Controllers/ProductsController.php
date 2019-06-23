@@ -583,18 +583,35 @@ class ProductsController extends Controller
     public function addTicket(Request $request){
         if ($request->isMethod('post')){
             $data = $request->all();
+            $admin= Auth::user()->name;
             $ticket = new Ticket;
             $ticket->user_id = $data['userid'];
             $ticket->title = $data['tickettitle'];
             $ticket->description = $data['description'];
             $ticket->comment = $data['Comment'];
             $ticket->status = $data['statustype'];
+            $ticket->admin = $admin;
             $ticket->save();
+            return redirect()->action('ProductsController@viewTicket')->with('flash_message_success','Ticket has been created');
         }
         return view ('cs.addticket');
     }
     public function viewTicket(){
         $tickets = Ticket::get();
         return view('cs.viewticket')->with(compact('tickets'));
+    }
+    public function editTicket(Request $request, $id=null){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            $admin= Auth::user()->name;
+            $ticket = Ticket::find($id);
+            $ticket->comment = $data['Comment'];
+            $ticket->status = $data['statustype'];
+            $ticket->admin = $admin;
+            $ticket->save();
+            return redirect()->action('ProductsController@viewTicket')->with('flash_message_success','Ticket has been updated');
+        }
+        $ticketdetail = Ticket::find($id);
+        return view('cs.editticket')->with(compact('ticketdetail'));
     }
 }

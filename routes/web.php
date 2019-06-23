@@ -110,6 +110,8 @@ Route::group(['middleware'=> ['auth']],function(){
         Route::get('/cs/knowledgebase','AdminController@knowledgebase');
         Route::match(['get','post'],'/cs/addticket','ProductsController@addTicket');
         Route::get('/cs/viewticket','ProductsController@viewTicket');
+        Route::match(['get','post'],'/cs/editticket/{id}','ProductsController@editTicket');
+        
     });
     
 

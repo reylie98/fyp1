@@ -45,6 +45,10 @@ class CategoryController extends Controller
     public function editCategory(Request $request, $id = null){
         if($request->isMethod('post')){
             $data = $request->all();
+            $urlcount = Category::where(['url'=>$data['url']])->count();
+            if($urlcount>0){
+                return redirect()->back()->with('flash_message_error','URL Already Exist');
+            }
             if(empty($data['status'])){
                 $status = 0;
             }else {
