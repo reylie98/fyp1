@@ -11,13 +11,13 @@
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Users</span> <span class="label label-important">2</span></a>
       <ul>
-        <li><a href="{{url('/admin/addproduct')}}">View Users</a></li>
+        <li><a href="{{url('/cs/viewusers')}}">View Users</a></li>
       </ul>
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Customer Support</span> <span class="label label-important">2</span></a>
       <ul>
-        <li><a href="{{url('/admin/addcoupon')}}">Open Live Chat</a></li>
-        <li><a href="{{url('/admin/viewcoupon')}}">View Knowledge Base</a></li>
+        <li><a href="{{url('/cs/livechat')}}">Open Live Chat</a></li>
+        <li><a href="{{url('/cs/knowledgebase')}}">View Knowledge Base</a></li>
       </ul>
     </li>
   </ul>

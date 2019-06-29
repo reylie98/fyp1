@@ -22,7 +22,6 @@
                 <th>Payment Method</th>
                 <th>Total</th>
                 <th>Created on</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -31,13 +30,12 @@
                 <td>{{$order->id}}</td>
                 <td>
                 @foreach($order->orders as $produ)
-                    {{$produ->product_code}}<br>
+                    {{$produ->product_name}}<br>
                 @endforeach
                 </td>
                 <td>{{$order->payment_method}}</td>
                 <td>MYR {{$order->grand_total}}</td>
                 <td>{{$order->created_at}}</td>
-                <td>View Details</td>
             </tr>
             @endforeach
         </tbody>

@@ -1,4 +1,4 @@
-@extends('layouts.adminlayout.admindesign')
+@extends('layouts.cslayout.csdesign')
 @section('content')
 
 <div id="content">
@@ -30,33 +30,19 @@
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
-                  <th>Ticket ID</th>
                   <th>User ID</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Comment</th>
-                  <th>Status</th>
-                  <th>Created Date</th>
-                  <th>Created/Updated by</th>
-                  <th>Actions</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>join Date</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($tickets as $ticket)
+                @foreach($users as $user)
                 <tr class="gradeX">
-                    <td>{{ $ticket->id }}</td>
-                    <td>{{ $ticket->user_id }}</td>
-                    <td>{{ $ticket->title }}</td>
-                    <td>{{ $ticket->description }}</td>
-                    <td>{{ $ticket->comment }}</td>
-                    <td>
-                    @if($ticket->status==1) Done @else On Process @endif
-                    </td>
-                    <td>{{ $ticket->created_at }}</td>
-                    <td>{{ $ticket->admin }}</td>
-                    <td class="center">
-                        <a href="{{url('/admin/editticket/'.$ticket->id)}}" class="btn btn-primary btn-mini" style="margin-left:30%;">Edit</a>
-                    </td>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->created_at }}</td>
                 </tr>   
 
                 @endforeach

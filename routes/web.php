@@ -25,7 +25,7 @@ Route::get('/product/{id}','ProductsController@products');
 //get product attribute price
 Route::get('/getproductprice','ProductsController@productprice');
 
-//delete product from cart
+//update quantity
 Route::get('/cart/updatequantity/{id}/{quantity}','ProductsController@updatequantity');
 
 //apply coupon
@@ -47,6 +47,10 @@ Route::get('/userlogout','UsersController@logout');
 //login
 Route::post('/userlogin','UsersController@login');
 
+//endpoint for livechat
+Route::get('userlist','MessageController@userlist')->name('user.list');
+Route::get('usermessage/{id}','MessageController@usermessage')->name('user.message');
+Route::post('/sendmessage','MessageController@sendmessage')->name('user.message.send');
 
 Route::group(['middleware'=> ['frontlogin']],function(){
     //account
@@ -62,7 +66,9 @@ Route::group(['middleware'=> ['frontlogin']],function(){
     //placeorder
     Route::match(['get','post'],'/placeorder','ProductsController@placeorder');
     //getthanks page 
-    Route::get('/thanks','ProductsController@thanks');
+    // Route::get('/thanks','ProductsController@thanks');
+    //getthanks page 
+    Route::get('/paypal','ProductsController@paypal');
     //users order page
     Route::get('/orders','ProductsController@orders');
 
@@ -102,6 +108,7 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/deletecoupon/{id}','CouponsController@deleteCoupon');
     Route::match(['get','post'],'/admin/editcoupon/{id}','CouponsController@editCoupon');
     Route::get('/admin/viewticket','AdminController@viewTicket');
+    Route::match(['get','post'],'/admin/editticket/{id}','AdminController@editTicket');
     });
     
     
@@ -111,7 +118,8 @@ Route::group(['middleware'=> ['auth']],function(){
         Route::match(['get','post'],'/cs/addticket','ProductsController@addTicket');
         Route::get('/cs/viewticket','ProductsController@viewTicket');
         Route::match(['get','post'],'/cs/editticket/{id}','ProductsController@editTicket');
-        
+        Route::get('/cs/viewusers','AdminController@viewUsers');
+        Route::get('/cs/livechat','AdminController@livechat');
     });
     
 

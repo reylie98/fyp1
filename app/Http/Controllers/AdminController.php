@@ -79,7 +79,29 @@ class AdminController extends Controller
     }
     public function viewTicket(){
         $tickets = Ticket::get();
+        $tickets = Ticket::paginate(10);
         return view('admin.viewticket')->with(compact('tickets'));
+    }
+    public function editTicket(Request $request, $id=null){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            $admin= Auth::user()->name;
+            $ticket = Ticket::find($id);
+            $ticket->comment = $data['Comment'];
+            $ticket->status = $data['statustype'];
+            $ticket->admin = $admin;
+            $ticket->save();
+            return redirect()->action('AdminController@viewTicket')->with('flash_message_success','Ticket has been updated');
+        }
+        $ticketdetail = Ticket::find($id);
+        return view('admin.editticket')->with(compact('ticketdetail'));
+    }
+    public function viewUsers(){
+        $users=User::where('admin',0)->get();
+        return view('cs.viewuser')->with(compact('users'));
+    }
+    public function livechat(){
+        return view('cs.livechat');
     }
 
 }

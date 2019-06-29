@@ -520,7 +520,7 @@ class ProductsController extends Controller
                 $couponcode = Session::get('couponcode'); 
              }
              if(empty(Session::get('couponamount'))){
-                $couponamount = ''; 
+                $couponamount = 0; 
              }else{
                 $couponamount = Session::get('couponamount'); 
              }
@@ -562,8 +562,12 @@ class ProductsController extends Controller
             //put session on product id
             Session::put('order_id',$orderid);
             Session::put('grand_total',$data['grandtotal']);
-
-            return redirect('/thanks');
+            // if($data['paymentmethod']=="COD"){
+                return redirect('/thanks');
+            // }else{
+            //     return redirect('/paypal');
+            // }
+           
 
         }
 
@@ -573,10 +577,17 @@ class ProductsController extends Controller
         DB::table('cart')->where('user_email',$email)->delete();
         return view('product.thanks');
     }
+    // public function paypal(Request $request){
+    //     $email=Auth::user()->email;
+    //     DB::table('cart')->where('user_email',$email)->delete();
+    //     return view('product.paypal');
+    // }
     public function orders(){
         $userid = Auth::user()->id;
         $orders = Order::with('orders')->where('user_id',$userid)->get();
+      
         $orders = json_decode(Json_encode($orders));
+        // dd($orders);
         // echo "<pre>"; print_r($orders);
         return view('product.order')->with(compact('orders'));
     }

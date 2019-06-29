@@ -14,7 +14,7 @@
     <section id="do_action">
 		<div class="container">
 			<div class="heading" align="center">
-				<h3>Your Cash on Delivery Order Has been Placed</h3>
+				<h3>Your Order Has been Placed</h3>
 				<p>Your Order Number is {{Session::get('order_id')}} and total is MYR {{Session::get('grand_total')}} </p>
 			</div>
 		</div>
