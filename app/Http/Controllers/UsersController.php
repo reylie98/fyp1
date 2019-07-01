@@ -90,4 +90,7 @@ class UsersController extends Controller
         }
         
     }
+    public function livechat(){
+        return view('cs.userlivechat');
+    }
 }

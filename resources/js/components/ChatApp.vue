@@ -1,6 +1,6 @@
 <template>
   <div class="livechat">
-    <div class="container clearfix">
+    <div class="container1 clearfix">
       <div class="people-list" id="people-list">
         <div class="search">
           <input type="text" placeholder="search">
@@ -74,6 +74,11 @@
 <script>
 export default {
   mounted() {
+    Echo.private(`chat.${authuser.id}`)//from event messagesend name and authuser from design page js
+    .listen('MessageSend', (e) => {
+       this.selectUser(e.message.from);
+        // console.log(e.message.message);
+    });
     this.$store.dispatch("userList"); //object userlist first
   },
   data() {

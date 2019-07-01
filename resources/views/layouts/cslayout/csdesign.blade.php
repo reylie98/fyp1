@@ -55,6 +55,11 @@
     $( "#Expiry" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
   } );
 </script>
+@if(auth()->check())
+  <script>
+    var authuser = @JSON(auth()->user())
+  </script>
+@endif
 
 </body>
 </html>

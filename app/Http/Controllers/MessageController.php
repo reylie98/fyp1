@@ -5,15 +5,32 @@ namespace App\Http\Controllers;
 use App\Message;
 use App\User;
 use Illuminate\Http\Request;
+use Auth;
+use App\Events\MessageSend;
 
 class MessageController extends Controller
 {
     public function userlist(){
-        $users = User::latest()->where('id','!=',auth()->user()->id)->get();
-        if(\Request::ajax()){
-            return response()->json($users,200);
+        $admin = Auth::user()->admin;
+        if($admin == 2){
+            $users = User::latest()->where('id','!=',auth()->user()->id)->get();
+            if(\Request::ajax()){
+                return response()->json($users,200);
+            }
+            return abort(404);
+        } if($admin == 2){
+            $users = User::latest()->where('admin',2)->get();
+            if(\Request::ajax()){
+                return response()->json($users,200);
+            }
+            return abort(404);
+        }else{
+            $users = User::latest()->where('admin',2)->get();
+            if(\Request::ajax()){
+                return response()->json($users,200);
+            }
+            return abort(404);
         }
-        return abort(404);
         
     }
     public function usermessage($id=null){
@@ -56,6 +73,7 @@ class MessageController extends Controller
             'type'=>1   
 
         ]);
+        broadcast(new MessageSend($messages));
         return response()->json($messages,201);
     }
 }

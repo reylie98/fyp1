@@ -7,6 +7,8 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Home | E-Shopper</title>
+    
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/frontendcss/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/frontendcss/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/frontendcss/prettyPhoto.css')}}" rel="stylesheet">
@@ -34,7 +36,7 @@
     @include('layouts.frontlayout.frontfooter')
 	
 
-  
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{asset('js/FrontendJS/jquery.js')}}"></script>
 	<script src="{{asset('js/FrontendJS/bootstrap.min.js')}}"></script>
 	<script src="{{asset('js/FrontendJS/jquery.scrollUp.min.js')}}"></script>
@@ -43,5 +45,10 @@
     <script src="{{asset('js/FrontendJS/main.js')}}"></script>
     <script src="{{ asset('js/FrontendJS/jquery.validate.js') }}"></script> 
     <script src="{{ asset('js/FrontendJS/passtrength.js') }}"></script> 
+    @if(auth()->check())
+    <script>
+        var authuser = @JSON(auth()->user())
+    </script>
+    @endif
 </body>
 </html>

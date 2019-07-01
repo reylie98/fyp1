@@ -71,6 +71,7 @@ Route::group(['middleware'=> ['frontlogin']],function(){
     Route::get('/paypal','ProductsController@paypal');
     //users order page
     Route::get('/orders','ProductsController@orders');
+    Route::get('/livechat','UsersController@livechat');
 
     //add to cart
     Route::match(['get','post'],'/addcart','ProductsController@addtocart');
@@ -109,6 +110,7 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::match(['get','post'],'/admin/editcoupon/{id}','CouponsController@editCoupon');
     Route::get('/admin/viewticket','AdminController@viewTicket');
     Route::match(['get','post'],'/admin/editticket/{id}','AdminController@editTicket');
+    Route::get('/admin/livechat','AdminController@livechat');
     });
     
     
