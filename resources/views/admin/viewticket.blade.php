@@ -60,8 +60,12 @@
                 </tr>   
 
                 @endforeach
+                
               </tbody>
             </table>
+            <div class="pagination" style="float:right">
+            {{$tickets->links()}}
+            </div>
           </div>
         </div>
       </div>

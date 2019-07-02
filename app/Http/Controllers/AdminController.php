@@ -78,8 +78,8 @@ class AdminController extends Controller
         return view('cs.knowledgebase');
     }
     public function viewTicket(){
-        $tickets = Ticket::get();
         $tickets = Ticket::paginate(10);
+        // $tickets = Ticket::;
         return view('admin.viewticket')->with(compact('tickets'));
     }
     public function editTicket(Request $request, $id=null){
