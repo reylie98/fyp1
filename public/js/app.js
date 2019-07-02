@@ -1768,8 +1768,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -65725,7 +65723,7 @@ var render = function() {
             attrs: {
               name: "message-to-send",
               id: "message-to-send",
-              placeholder: "Type your message",
+              placeholder: "Type Your Message and Press Enter to Send",
               rows: "3"
             },
             domProps: { value: _vm.message },
@@ -65750,9 +65748,7 @@ var render = function() {
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-file-o" }),
           _vm._v("    \n        "),
-          _c("i", { staticClass: "fa fa-file-image-o" }),
-          _vm._v(" "),
-          _c("button", [_vm._v("Send")])
+          _c("i", { staticClass: "fa fa-file-image-o" })
         ])
       ])
     ])

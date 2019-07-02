@@ -54,14 +54,12 @@
             v-model="message"
             name="message-to-send"
             id="message-to-send"
-            placeholder="Type your message"
+            placeholder="Type Your Message and Press Enter to Send" 
             rows="3"
           ></textarea>
 
           <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
           <i class="fa fa-file-image-o"></i>
-
-          <button>Send</button>
         </div>
         <!-- end chat-message -->
       </div>
