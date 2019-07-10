@@ -592,12 +592,13 @@ class ProductsController extends Controller
         return view('product.order')->with(compact('orders'));
     }
     public function addTicket(Request $request){
+        $options = DB::table('ticket_title')->pluck("title","id");
         if ($request->isMethod('post')){
             $data = $request->all();
             $admin= Auth::user()->name;
             $ticket = new Ticket;
             $ticket->user_id = $data['userid'];
-            $ticket->title = $data['tickettitle'];
+            $ticket->title = $data['title'];
             $ticket->description = $data['description'];
             $ticket->comment = $data['Comment'];
             $ticket->status = $data['statustype'];
@@ -605,8 +606,10 @@ class ProductsController extends Controller
             $ticket->save();
             return redirect()->action('ProductsController@viewTicket')->with('flash_message_success','Ticket has been created');
         }
-        return view ('cs.addticket');
+
+        return view ('cs.addticket')->with(compact('options'));
     }
+
     public function viewTicket(){
         $tickets = Ticket::get();
         return view('cs.viewticket')->with(compact('tickets'));
@@ -624,5 +627,9 @@ class ProductsController extends Controller
         }
         $ticketdetail = Ticket::find($id);
         return view('cs.editticket')->with(compact('ticketdetail'));
+    }
+    public function userticket(){
+        $userticket = Ticket::where('user_id',Auth()->user()->id)->get();
+        return view('users.viewticket')->with(compact('userticket'));
     }
 }

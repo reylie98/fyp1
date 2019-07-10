@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<script src="{{ asset('js/app.js') }}" defer></script>
 <link rel="stylesheet" href="{{asset('css/backendcss/bootstrap.min.css')}}" />
 <link rel="stylesheet" href="{{asset('css/backendcss/bootstrap-responsive.min.css')}}" />
 <link rel="stylesheet" href="{{asset('css/backendcss/uniform.css')}}" />
@@ -30,7 +29,7 @@
 
 @include('layouts.adminlayout.adminfooter')
 
-
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/BackendJS/jquery.min.js') }}"></script> 
 <!-- <script src="{{ asset('js/BackendJS/jquery.ui.custom.js') }}"></script>  -->
 <script src="{{ asset('js/BackendJS/bootstrap.min.js') }}"></script> 
@@ -44,11 +43,15 @@
 <script src="{{ asset('js/BackendJS/matrix.popover.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
 <script>
   $( function() {
     $( "#Expiry" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
   } );
 </script>
+
 @if(auth()->check())
   <script>
     var authuser = @JSON(auth()->user())

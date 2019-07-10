@@ -65661,9 +65661,11 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("div", { staticClass: "chat-num-messages" }, [
-              _vm._v("already 1 902 messages")
-            ])
+            _vm.userMessage.user
+              ? _c("div", { staticClass: "chat-num-messages" }, [
+                  _vm._v(_vm._s(_vm.userMessage.user.email))
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-star" })

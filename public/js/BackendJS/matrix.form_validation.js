@@ -217,6 +217,38 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#add_admin").validate({
+		rules:{
+			name:{
+				required:true,
+				accept: "[a-zA-Z0-9]+"
+			},
+			email:{
+				required:true,
+				email:true
+			},
+			password:{
+				required:true,
+				minlength:8,
+				maxlength:20
+			}
+		},
+		messages:{
+			categoryname:{
+				accept:"your Category name should be Alphabet and Numeric only !"
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+	
 	$("#password_validate").validate({
 		rules:{
 			currentpwd:{
@@ -296,6 +328,7 @@ $(document).ready(function(){
 		}
 		return false;
 	});
-
+	
 });
+
 });

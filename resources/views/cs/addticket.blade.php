@@ -30,12 +30,28 @@
               <div class="control-group">
                 <label class="control-label">Title</label>
                 <div class="controls">
-                  <input type="text" name="tickettitle" id="ticketitle" required>
+                <select name="title" id="title" style="width: 220px">
+                  <option disabled value="" selected hidden>Please Select The Title</option>
+                    @foreach($options as $key=>$value)
+                      <option value="{{$key}}" required>{{$value}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Subtitle</label>
+                <div class="controls">
+                <select name="subtitle" id="subtitle" style="width: 220px">
+                    <!-- <option value="0">Main Category</option> -->
+               
+                    <option value="">Select City</option>
+                   
+                  </select>
                 </div>
               </div>
               <label class="control-label">User ID</label>
                 <div class="controls">
-                  <input type="number" name="userid" id="userid" required min="0">
+                  <input type="number" name="userid" id="userid" required min="0" style="width: 220px">
                 </div>
               <div class="control-group">
                 <label class="control-label">Description</label>

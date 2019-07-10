@@ -103,5 +103,23 @@ class AdminController extends Controller
     public function livechat(){
         return view('cs.livechat');
     }
+    public function addadmin(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            $chckemail = User::where(['email'=>$data['email']])->count();
+            if($chckemail>0){
+                return redirect()->back()->with('flash_message_error', 'Email Already Exist');
+            }else{
+            $user = new User;
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password= bcrypt($data['password']);
+            $user->admin = $data['type'];
+            $user->save();
+            return redirect()->back()->with('flash_message_success', 'Admin Successfully Added!');
+            }
+        }
+        return view('admin.addadmin');
+    }
 
 }

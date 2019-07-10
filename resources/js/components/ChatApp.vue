@@ -27,7 +27,7 @@
 
           <div class="chat-about">
             <div v-if="userMessage.user" class="chat-with">Chat With {{userMessage.user.name}}</div>
-            <div class="chat-num-messages">already 1 902 messages</div>
+            <div v-if="userMessage.user" class="chat-num-messages">{{userMessage.user.email}}</div>
           </div>
           <i class="fa fa-star"></i>
         </div>

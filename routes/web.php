@@ -52,6 +52,7 @@ Route::get('userlist','MessageController@userlist')->name('user.list');
 Route::get('usermessage/{id}','MessageController@usermessage')->name('user.message');
 Route::post('/sendmessage','MessageController@sendmessage')->name('user.message.send');
 
+
 Route::group(['middleware'=> ['frontlogin']],function(){
     //account
     Route::match(['get','post'],'account','UsersController@account');
@@ -77,6 +78,7 @@ Route::group(['middleware'=> ['frontlogin']],function(){
     Route::match(['get','post'],'/addcart','ProductsController@addtocart');
     Route::match(['get','post'],'/cart','ProductsController@cart');
     Route::get('/cart/deleteproduct/{id}','ProductsController@deletecart');
+    Route::get('/viewticket','ProductsController@userticket');
 });
 
 Route::group(['middleware'=> ['auth']],function(){
@@ -111,6 +113,7 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::get('/admin/viewticket','AdminController@viewTicket');
     Route::match(['get','post'],'/admin/editticket/{id}','AdminController@editTicket');
     Route::get('/admin/livechat','AdminController@livechat');
+    Route::match(['get','post'],'/admin/addAdmin','AdminController@addadmin');
     });
     
     
