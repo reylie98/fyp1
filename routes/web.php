@@ -112,7 +112,7 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::match(['get','post'],'/admin/editcoupon/{id}','CouponsController@editCoupon');
     Route::get('/admin/viewticket','AdminController@viewTicket');
     Route::match(['get','post'],'/admin/editticket/{id}','AdminController@editTicket');
-    Route::get('/admin/livechat','AdminController@livechat');
+    Route::get('/admin/livechat','AdminController@livechat1');
     Route::match(['get','post'],'/admin/addAdmin','AdminController@addadmin');
     });
     

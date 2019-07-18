@@ -592,7 +592,6 @@ class ProductsController extends Controller
         return view('product.order')->with(compact('orders'));
     }
     public function addTicket(Request $request){
-        $options = DB::table('ticket_title')->pluck("title","id");
         if ($request->isMethod('post')){
             $data = $request->all();
             $admin= Auth::user()->name;
@@ -607,7 +606,7 @@ class ProductsController extends Controller
             return redirect()->action('ProductsController@viewTicket')->with('flash_message_success','Ticket has been created');
         }
 
-        return view ('cs.addticket')->with(compact('options'));
+        return view ('cs.addticket');
     }
 
     public function viewTicket(){

@@ -32,9 +32,7 @@
                 <div class="controls">
                 <select name="title" id="title" style="width: 220px">
                   <option disabled value="" selected hidden>Please Select The Title</option>
-                    @foreach($options as $key=>$value)
-                      <option value="{{$key}}" required>{{$value}}</option>
-                    @endforeach
+
                   </select>
                 </div>
               </div>

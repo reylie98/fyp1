@@ -29,7 +29,7 @@
 
 @include('layouts.adminlayout.adminfooter')
 
-<script src="{{ asset('js/app.js') }}"></script>
+@yield('js')
 <script src="{{ asset('js/BackendJS/jquery.min.js') }}"></script> 
 <!-- <script src="{{ asset('js/BackendJS/jquery.ui.custom.js') }}"></script>  -->
 <script src="{{ asset('js/BackendJS/bootstrap.min.js') }}"></script> 
@@ -46,16 +46,17 @@
 
 
 
+
 <script>
   $( function() {
     $( "#Expiry" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
   } );
 </script>
-
 @if(auth()->check())
   <script>
     var authuser = @JSON(auth()->user())
   </script>
 @endif
+
 </body>
 </html>

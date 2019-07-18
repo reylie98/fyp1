@@ -103,6 +103,9 @@ class AdminController extends Controller
     public function livechat(){
         return view('cs.livechat');
     }
+    public function livechat1(){
+        return view('cs.adminlivechat');
+    }
     public function addadmin(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();

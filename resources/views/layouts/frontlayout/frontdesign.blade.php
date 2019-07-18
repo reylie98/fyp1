@@ -32,11 +32,12 @@
     @include('layouts.frontlayout.frontheader')
 	
     @yield('content')
+
 	
     @include('layouts.frontlayout.frontfooter')
 	
-
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('script')
+  
     <script src="{{asset('js/FrontendJS/jquery.js')}}"></script>
 	<script src="{{asset('js/FrontendJS/bootstrap.min.js')}}"></script>
 	<script src="{{asset('js/FrontendJS/jquery.scrollUp.min.js')}}"></script>

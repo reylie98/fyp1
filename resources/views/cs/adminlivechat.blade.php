@@ -1,4 +1,4 @@
-@extends('layouts.cslayout.csdesign')
+@extends('layouts.adminlayout.admindesign')
 @section('content')
 <div id="content">
 <div id="content-header">
@@ -9,8 +9,4 @@
 </div>
 @yield('js')
 <script src="{{ asset('js/app.js') }}" defer></script>
-
-
-
-
 @endsection
