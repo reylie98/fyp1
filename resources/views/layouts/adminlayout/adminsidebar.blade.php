@@ -25,6 +25,14 @@
       <ul>
         <li><a href="{{url('/admin/viewticket')}}">View Tickets</a></li>
       </ul>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Livechat</span> <span class="label label-important">2</span></a>
+      <ul>
+        <li><a href="{{url('/admin/livechat')}}">Open Livechat</a></li>
+      </ul>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Orders</span> <span class="label label-important">2</span></a>
+      <ul>
+        <!-- <li><a href="{{url('/admin/livechat')}}">Open Livechat</a></li> -->
+      </ul>
     </li>
   </ul>
 </div>

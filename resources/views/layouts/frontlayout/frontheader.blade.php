@@ -66,10 +66,13 @@ $mainCategories = Controller::mainCategories();
 								
 								<li><a href="{{url('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+
 								@if(empty(Auth::check()))
 									<li><a href="{{url('/logon')}}"><i class="fa fa-lock"></i> Login</a></li>
 								@else
 									<li><a href="{{url('/account')}}"><i class="fa fa-user"></i> Account</a></li>
+									<li><a href="{{url('/viewticket')}}"><i class="fa fa-user"></i> Ticket</a></li>
+									<li><a href="{{url('/orders')}}"><i class="fa fa-phone"></i> orders</a></li>
 									<li><a href="{{url('/userlogout')}}"><i class="fa fa-sign-out"></i> Logout</a></li>
 								@endif
 							</ul>
@@ -103,14 +106,7 @@ $mainCategories = Controller::mainCategories();
 										@endforeach
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+								<li><a href="{{url('/livechat')}}">Contact</a></li>
 							</ul>
 						</div>
 					</div>
