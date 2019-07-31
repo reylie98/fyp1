@@ -67,7 +67,7 @@ Route::group(['middleware'=> ['frontlogin']],function(){
     //placeorder
     Route::match(['get','post'],'/placeorder','ProductsController@placeorder');
     //getthanks page 
-    // Route::get('/thanks','ProductsController@thanks');
+    Route::get('/thanks','ProductsController@thanks');
     //getthanks page 
     Route::get('/paypal','ProductsController@paypal');
     //users order page
@@ -114,6 +114,7 @@ Route::group(['middleware'=> ['auth']],function(){
     Route::match(['get','post'],'/admin/editticket/{id}','AdminController@editTicket');
     Route::get('/admin/livechat','AdminController@livechat1');
     Route::match(['get','post'],'/admin/addAdmin','AdminController@addadmin');
+    Route::get('/admin/vieworder','AdminController@vieworder');
     });
     
     
@@ -125,6 +126,7 @@ Route::group(['middleware'=> ['auth']],function(){
         Route::match(['get','post'],'/cs/editticket/{id}','ProductsController@editTicket');
         Route::get('/cs/viewusers','AdminController@viewUsers');
         Route::get('/cs/livechat','AdminController@livechat');
+        Route::get('/cs/vieworder','AdminController@csvieworder');
     });
     
 

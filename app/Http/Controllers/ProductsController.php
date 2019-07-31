@@ -592,12 +592,14 @@ class ProductsController extends Controller
         return view('product.order')->with(compact('orders'));
     }
     public function addTicket(Request $request){
+        
         if ($request->isMethod('post')){
             $data = $request->all();
             $admin= Auth::user()->name;
             $ticket = new Ticket;
             $ticket->user_id = $data['userid'];
             $ticket->title = $data['title'];
+            $ticket->subtitle = $data['subtitle'];
             $ticket->description = $data['description'];
             $ticket->comment = $data['Comment'];
             $ticket->status = $data['statustype'];

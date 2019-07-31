@@ -1,10 +1,10 @@
-@extends('layouts.adminlayout.admindesign')
+@extends('layouts.cslayout.csdesign')
 @section('content')
 
 <div id="content">
 <div id="content-header">
     <div id="breadcrumb"> <a href="" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">View Ticket</a> </div>
-    <h1>Tickets</h1>
+    <h1>Orders</h1>
     @if(Session::has('flash_message_error')) 
        <div class="alert alert-error alert-block">
 	        <button type="button" class="close" data-dismiss="alert">×</button>	
@@ -24,49 +24,40 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>View Tickets</h5>
+            <h5>View Order</h5>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
-                  <th>Ticket ID</th>
+                  <th>Order ID</th>
                   <th>User ID</th>
-                  <th>Title</th>
-                  <th>Subtitle</th>
-                  <th>Description</th>
-                  <th>Comment</th>
-                  <th>Status</th>
-                  <th>Created Date</th>
-                  <th>Created/Updated by</th>
-                  <th>Actions</th>
+                  <th>User Email</th>
+                  <th>shipping Charge</th>
+                  <th>coupon code</th>
+                  <th>coupon amount</th>
+                  <th>payment method</th>
+                  <th>grand total</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($tickets as $ticket)
+                @foreach($orders as $order)
                 <tr class="gradeX">
-                    <td>{{ $ticket->id }}</td>
-                    <td>{{ $ticket->user_id }}</td>
-                    <td>{{ $ticket->title }}</td>
-                    <td>{{ $ticket->subtitle }}</td>
-                    <td>{{ $ticket->description }}</td>
-                    <td>{{ $ticket->comment }}</td>
-                    <td>
-                    @if($ticket->status==1) Done @else On Process @endif
+                    <td>{{ $order->id }}</td>
+                    <td>{{ $order->user_id }}</td>
+                    <td>{{ $order->user_email }}</td>
+                    <td>{{ $order->shippingcharge }}</td>
+                    <td>{{ $order->coupon_code}}</td>
+                    <td>{{$order->coupon_amount}}
                     </td>
-                    <td>{{ $ticket->created_at }}</td>
-                    <td>{{ $ticket->admin }}</td>
-                    <td class="center">
-                        <a href="{{url('/admin/editticket/'.$ticket->id)}}" class="btn btn-primary btn-mini" style="margin-left:30%;">Edit</a>
-                    </td>
+                    <td>{{ $order->payment_method }}</td>
+                    <td>{{ $order->grand_total }}</td>
                 </tr>   
 
                 @endforeach
                 
               </tbody>
             </table>
-            <div class="pagination" style="float:right">
-            {{$tickets->links()}}
             </div>
           </div>
         </div>

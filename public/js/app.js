@@ -1768,6 +1768,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -65664,6 +65665,12 @@ var render = function() {
             _vm.userMessage.user
               ? _c("div", { staticClass: "chat-num-messages" }, [
                   _vm._v(_vm._s(_vm.userMessage.user.email))
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.userMessage.user
+              ? _c("div", { staticClass: "chat-num-messages" }, [
+                  _vm._v(" User ID " + _vm._s(_vm.userMessage.user.id))
                 ])
               : _vm._e()
           ]),

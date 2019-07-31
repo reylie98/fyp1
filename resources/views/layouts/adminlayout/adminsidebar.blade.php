@@ -31,7 +31,12 @@
       </ul>
       <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Orders</span> <span class="label label-important">2</span></a>
       <ul>
-        <!-- <li><a href="{{url('/admin/livechat')}}">Open Livechat</a></li> -->
+        <li><a href="{{url('/admin/vieworder')}}">View Orders</a></li>
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Users</span> <span class="label label-important">2</span></a>
+      <ul>
+        <li><a href="{{url('/admin/addAdmin')}}">Add Admin</a></li>
       </ul>
     </li>
   </ul>

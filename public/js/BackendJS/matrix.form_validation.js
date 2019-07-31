@@ -1,5 +1,28 @@
 
 $(document).ready(function(){
+	const dropdownData = {
+		Other: ['Asking', 'Report'],
+		Refund: ['COD', 'PayPal'],
+		Product: ['Product Faulty','Wrong Product'],
+	}
+
+	Object.keys(dropdownData).forEach((title) => {
+		$("#title").append(`
+		<option value="${title}">${title}</option>
+	`)
+	})
+
+	$("#title").on("change", () => {
+		$("#subtitle").find('option').remove().end().append('<option value="">Please select subtitle</option>')
+		const changedTitle = $("#title").val()
+		dropdownData[changedTitle].forEach((subtitle) => {
+			$("#subtitle").append(`
+			<option value="${subtitle}">${subtitle}</option>
+			`)
+		})
+
+	})
+
 	
 	$("#currentpwd").keyup(function(){
 		var currentpwd = $("#currentpwd").val();

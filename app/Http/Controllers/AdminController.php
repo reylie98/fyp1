@@ -7,6 +7,7 @@ use Auth;
 use Session;
 use App\Ticket;
 use App\User;
+use App\Order;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -124,5 +125,15 @@ class AdminController extends Controller
         }
         return view('admin.addadmin');
     }
+    public function vieworder(){
+        $orders=Order::get();
+        return view('admin.vieworder')->with(compact('orders'));
+    }
+    public function csvieworder(){
+        $orders=Order::get();
+        return view('cs.vieworder')->with(compact('orders'));
+    }
+ 
+
 
 }

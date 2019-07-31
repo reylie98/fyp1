@@ -30,20 +30,16 @@
               <div class="control-group">
                 <label class="control-label">Title</label>
                 <div class="controls">
-                <select name="title" id="title" style="width: 220px">
-                  <option disabled value="" selected hidden>Please Select The Title</option>
-
+                  <select name="title" id="title" style="width: 220px" required>
+                  
                   </select>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Subtitle</label>
+                
                 <div class="controls">
                 <select name="subtitle" id="subtitle" style="width: 220px">
-                    <!-- <option value="0">Main Category</option> -->
-               
-                    <option value="">Select City</option>
-                   
                   </select>
                 </div>
               </div>

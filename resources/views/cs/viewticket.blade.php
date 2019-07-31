@@ -33,6 +33,7 @@
                   <th>Ticket ID</th>
                   <th>User ID</th>
                   <th>Title</th>
+                  <th>Subtitle</th>
                   <th>Description</th>
                   <th>Comment</th>
                   <th>Status</th>
@@ -47,6 +48,7 @@
                     <td>{{ $ticket->id }}</td>
                     <td>{{ $ticket->user_id }}</td>
                     <td>{{ $ticket->title }}</td>
+                    <td>{{ $ticket->subtitle }}</td>
                     <td>{{ $ticket->description }}</td>
                     <td>{{ $ticket->comment }}</td>
                     <td>
